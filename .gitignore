@@ -11,3 +11,15 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /bin/
+
+# Gradle and IntelliJ
+.gradle/
+.idea/
+gradlew
+gradlew.bat
+gradle/
+build/
+build.gradle
+.DS_STORE
+*.ipr
+*.iws
