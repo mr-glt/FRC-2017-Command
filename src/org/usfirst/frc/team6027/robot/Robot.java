@@ -5,16 +5,13 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6027.robot.commands.Autonomous;
 import org.usfirst.frc.team6027.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team6027.robot.subsystems.Gyro;
-import org.usfirst.frc.team6027.robot.subsystems.Ultrasonic;
 
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain drivetrain = new DriveTrain();
-	public static Ultrasonic ultrasonic = new Ultrasonic();
-	public static Gyro gyro = new Gyro();
 	public static OI oi = new OI();
 
 	Command autonomousCommand;
@@ -22,6 +19,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		autonomousCommand = new Autonomous();
+		SmartDashboard.putData(drivetrain);
 	}
 
 	@Override
@@ -46,6 +44,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+		autonomousCommand.cancel();
 	}
 
 	@Override

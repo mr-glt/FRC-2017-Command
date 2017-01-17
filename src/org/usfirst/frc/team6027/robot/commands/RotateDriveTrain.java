@@ -7,9 +7,6 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6027.robot.Robot;
 
-/**
- * Created by colso on 1/12/2017.
- */
 public class RotateDriveTrain extends Command{
     private PIDController pid;
 
@@ -19,7 +16,7 @@ public class RotateDriveTrain extends Command{
             PIDSourceType source = PIDSourceType.kDisplacement;
             @Override
             public double pidGet() {
-                if(Robot.oi.getGyro().getAngle()<0){
+            	if(Robot.oi.getGyro().getAngle()<0){
                     return Robot.oi.getGyro().getAngle() + 360;
                 }
                 else{
@@ -49,7 +46,6 @@ public class RotateDriveTrain extends Command{
 
     @Override
     protected void initialize() {
-        Robot.gyro.calibrateGyro();
         pid.reset();
         pid.enable();
     }

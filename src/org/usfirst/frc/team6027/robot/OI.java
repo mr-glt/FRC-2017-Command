@@ -8,11 +8,11 @@ import org.usfirst.frc.team6027.robot.commands.DriveDistance;
 
 public class OI {
 	private Joystick stick = new Joystick(0);
-	private JoystickButton trigger = new JoystickButton(stick,0);
+	private JoystickButton trigger = new JoystickButton(stick,7);
 	private AnalogInput ultrasonic = new AnalogInput(0);
 	private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	public OI(){
-		trigger.whenActive(new DriveDistance(10));
+		trigger.whileHeld(new DriveDistance(10));
 	}
 	public Joystick getJoystick(){
 		return stick;
