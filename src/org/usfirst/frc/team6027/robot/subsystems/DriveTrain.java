@@ -19,16 +19,17 @@ public class DriveTrain extends PIDSubsystem {
     private RobotDrive drivetrain= new RobotDrive(frontLeft,backLeft,frontRight,backRight);
 
     public DriveTrain() {
-		super("DriveTrain", 0.01,0.01,0.01);
+		super("DriveTrain", 7,0.018,1.5);
 		setInputRange(3,100);
 		setAbsoluteTolerance(2);
 	}
-    
+   
     public void initDefaultCommand() {
     	setDefaultCommand(new StickDrive());
     }
     public void drive(Joystick stick){
     	drivetrain.arcadeDrive(stick);
+        SmartDashboard.putNumber("Distance", Robot.oi.getUltrasonic().getValue()*0.125);
     }
     public void drive(double forward, double turn){
     	drivetrain.arcadeDrive(forward,turn);
@@ -41,7 +42,7 @@ public class DriveTrain extends PIDSubsystem {
     @Override
     protected void usePIDOutput(double output) {
         SmartDashboard.putNumber("PID Output", output);
-        drivetrain.arcadeDrive(output,0);
+        drivetrain.arcadeDrive(output*-1,0);
     }
 }
 
