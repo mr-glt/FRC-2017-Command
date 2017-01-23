@@ -8,10 +8,14 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6027.robot.commands.Autonomous;
 import org.usfirst.frc.team6027.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team6027.robot.subsystems.Flywheel;
+import org.usfirst.frc.team6027.robot.subsystems.Meter;
 
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain drivetrain = new DriveTrain();
+	public static Flywheel flywheel = new Flywheel();
+	public static Meter meter = new Meter();
 	public static OI oi = new OI();
 
 	Command autonomousCommand;
