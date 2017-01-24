@@ -9,7 +9,6 @@ public class Aim extends Command {
     }
     @Override
     protected void initialize() {
-        Robot.vision.setUpCamera();
         Robot.vision.startProcessing();
     }
 
