@@ -7,11 +7,13 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6027.robot.commands.Autonomous;
+import org.usfirst.frc.team6027.robot.subsystems.DriveEncoders;
 import org.usfirst.frc.team6027.robot.subsystems.DriveTrain;
 
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain drivetrain = new DriveTrain();
+	public static DriveEncoders driveEncoders = new DriveEncoders(0.1, 10, 8,true,7);
 	public static OI oi = new OI();
 
 	Command autonomousCommand;
