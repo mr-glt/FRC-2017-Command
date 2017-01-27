@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import org.usfirst.frc.team6027.robot.commands.Autonomous;
 import org.usfirst.frc.team6027.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6027.robot.subsystems.Gyro;
 import org.usfirst.frc.team6027.robot.subsystems.Ultrasonic;
@@ -17,12 +18,13 @@ public class Robot extends IterativeRobot {
 	public static Gyro gyro = new Gyro();
 	public static Vision vision = new Vision();
 	public static OI oi = new OI();
-	
-	Command StickCommand;
+
+	Command autonomousCommand;
 
 	@Override
 	public void robotInit() {
 		vision.setUpCamera();
+		autonomousCommand = new Autonomous();
 	}
 
 	@Override
@@ -37,6 +39,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
+		autonomousCommand.start();
 	}
 
 	@Override
