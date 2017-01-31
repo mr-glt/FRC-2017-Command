@@ -1,18 +1,22 @@
 package org.usfirst.frc.team6027.robot.commands;
 
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6027.robot.Robot;
 
 public class DriveDistance extends Command {
-    private double setpoint;
+    private PIDController pid;
+
     public DriveDistance(double setpoint){
-        this.setpoint = setpoint;
         requires(Robot.drivetrain);
+        pid = new PIDController(0.27, 0, 0, Robot.gyro.getGyro(), new pidOutput());
+        pid.setAbsoluteTolerance(2);
+        pid.setSetpoint(setpoint);
     }
     @Override
     protected void initialize() {
-        Robot.drivetrain.enable();
-        Robot.drivetrain.setSetpoint(setpoint);
+        pid.enable();
     }
 
     @Override
@@ -22,16 +26,26 @@ public class DriveDistance extends Command {
 
     @Override
     protected boolean isFinished() {
-        return Robot.drivetrain.onTarget();
+        return pid.onTarget();
     }
 
     @Override
     protected void end() {
-        Robot.drivetrain.disable();
+        pid.disable();
     }
 
     @Override
     protected void interrupted() {
-        Robot.drivetrain.disable();
+        pid.disable();
+    }
+    private class pidOutput implements PIDOutput {
+        @Override
+        public void pidWrite(double output) {
+            if(output<0){
+                Robot.drivetrain.tankDrive(output*-0.53,output*-0.5);
+            }else{
+                Robot.drivetrain.tankDrive(output*-0.50,output*-0.55);
+            }
+        }
     }
 }

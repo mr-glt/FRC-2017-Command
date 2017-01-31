@@ -14,7 +14,7 @@ public class StickDrive extends Command {
     }
 
     protected void execute() {
-    	Robot.drivetrain.drive(Robot.oi.getJoystick());
+    	Robot.drivetrain.arcadeDrive(Robot.oi.getJoystick());
     }
 
     protected boolean isFinished() {
@@ -22,7 +22,7 @@ public class StickDrive extends Command {
     }
 
     protected void end() {
-    	Robot.drivetrain.drive(0, 0);
+    	Robot.drivetrain.arcadeDrive(0, 0);
     }
 
     protected void interrupted() {

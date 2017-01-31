@@ -2,46 +2,58 @@ package org.usfirst.frc.team6027.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team6027.robot.Robot;
 
 
 public class DriveEncoders extends Subsystem {
-    private Encoder encoder = Robot.oi.getDriveEncoder();
+    private Encoder encoderLeft;
+    private Encoder encoderRight;
 
-    public DriveEncoders(double maxPeriod, int minRate, double distancePerPulse, boolean reverseDirection,int samplesToAverage) {
-        encoder.setMaxPeriod(maxPeriod);
-        encoder.setMinRate(minRate);
-        encoder.setDistancePerPulse(distancePerPulse);
-        encoder.setReverseDirection(reverseDirection);
-        encoder.setSamplesToAverage(samplesToAverage);
+    public DriveEncoders(int leftChannelA, int leftChannelB, int rightChannelA,int rightChannelB,
+                         double maxPeriod, int minRate, double distancePerPulse, boolean reverseDirection,int samplesToAverage) {
+
+        encoderLeft  = new Encoder(leftChannelA, leftChannelB, reverseDirection, Encoder.EncodingType.k4X);
+        encoderRight  = new Encoder(rightChannelA, rightChannelB, reverseDirection, Encoder.EncodingType.k4X);
+
+        encoderLeft.setMaxPeriod(maxPeriod);
+        encoderLeft.setMinRate(minRate);
+        encoderLeft.setDistancePerPulse(distancePerPulse);
+        encoderLeft.setSamplesToAverage(samplesToAverage);
+        encoderRight.setMaxPeriod(maxPeriod);
+        encoderRight.setMinRate(minRate);
+        encoderRight.setDistancePerPulse(distancePerPulse);
+        encoderRight.setSamplesToAverage(samplesToAverage);
     }
 
     @Override
     protected void initDefaultCommand() {
-
     }
 
+    public double getLeftDistance(){
+        return encoderLeft.getDistance();
+    }
+    public double getRightDistance(){
+        return encoderRight.getDistance();
+    }
     public double distanceDriven() {
-        SmartDashboard.putNumber("Distance", encoder.getDistance());
-        return encoder.getDistance();
+        return (encoderLeft.getDistance()+encoderRight.getDistance())/2;
     }
 
-    public int count() {
-        SmartDashboard.putNumber("Count", encoder.get());
-        return encoder.get();
+    public int leftCount() {
+        return encoderLeft.get();
+    }
+    public int rightCount() {
+        return encoderRight.get();
     }
 
     public boolean direction() {
-        SmartDashboard.putBoolean("Direction", encoder.getDirection());
-        return encoder.getDirection();
+        return encoderLeft.getDirection();
     }
 
     public boolean stopped() {
-        SmartDashboard.putBoolean("Stopped", encoder.getStopped());
-        return encoder.getStopped();
+        return encoderLeft.getStopped();
     }
     public void reset(){
-        encoder.reset();
+        encoderLeft.reset();
+        encoderRight.reset();
     }
 }
