@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6027.robot.Robot;
 
 public class RotateDriveTrain extends Command{
@@ -12,41 +13,13 @@ public class RotateDriveTrain extends Command{
 
     public RotateDriveTrain(double theta){
         requires(Robot.drivetrain);
-        pid = new PIDController(0.01, 0, 0, new PIDSource(){
-            PIDSourceType source = PIDSourceType.kDisplacement;
-            @Override
-            public double pidGet() {
-            	if(Robot.oi.getGyro().getAngle()<0){
-                    return Robot.oi.getGyro().getAngle() + 360;
-                }
-                else{
-                    return Robot.oi.getGyro().getAngle();
-                }
-            }
-
-            @Override
-            public void setPIDSourceType(PIDSourceType pidSource) {
-                source = pidSource;
-            }
-
-            @Override
-            public PIDSourceType getPIDSourceType() {
-                return source;
-            }
-        },new PIDOutput(){
-            @Override
-            public void pidWrite(double d) {
-                Robot.drivetrain.drive(0, d);
-            }
-        });
+        pid = new PIDController(0.27, 0, 0, Robot.gyro.getGyro(), new pidOutput());
         pid.setAbsoluteTolerance(1);
-        pid.setInputRange(0,360);
         pid.setSetpoint(theta);
     }
 
     @Override
     protected void initialize() {
-        pid.reset();
         pid.enable();
     }
 
@@ -63,12 +36,18 @@ public class RotateDriveTrain extends Command{
     @Override
     protected void end() {
         pid.disable();
-        Robot.drivetrain.drive(0, 0);
+        pid.reset();
     }
 
     @Override
     protected void interrupted() {
         pid.disable();
-        Robot.drivetrain.drive(0, 0);
+        pid.reset();
+    }
+    private class pidOutput implements PIDOutput {
+        @Override
+        public void pidWrite(double output) {
+            Robot.drivetrain.arcadeDrive(0,output*-0.40);
+        }
     }
 }

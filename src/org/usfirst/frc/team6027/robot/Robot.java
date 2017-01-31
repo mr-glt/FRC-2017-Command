@@ -8,11 +8,16 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6027.robot.commands.Autonomous;
 import org.usfirst.frc.team6027.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team6027.robot.subsystems.Gyro;
+import org.usfirst.frc.team6027.robot.subsystems.Ultrasonic;
 import org.usfirst.frc.team6027.robot.subsystems.Vision;
 
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain drivetrain = new DriveTrain();
+	public static DriveEncoders driveEncoders = new DriveEncoders(0,1,2,3,0.1, 10, 0.0095238095,true,7);
+	public static Ultrasonic ultrasonic = new Ultrasonic(0.125,0);
+	public static Gyro gyro = new Gyro();
 	public static Vision vision = new Vision();
 	public static OI oi = new OI();
 

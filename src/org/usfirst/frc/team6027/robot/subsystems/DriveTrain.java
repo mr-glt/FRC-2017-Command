@@ -1,8 +1,6 @@
 package org.usfirst.frc.team6027.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team6027.robot.Robot;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team6027.robot.commands.StickDrive;
 
 import com.ctre.CANTalon;
@@ -11,38 +9,30 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.VictorSP;
 
-public class DriveTrain extends PIDSubsystem {
-	private CANTalon backRight = new CANTalon(0);
-    private CANTalon frontLeft = new CANTalon(1);
-    private VictorSP frontRight = new VictorSP(1);
+public class DriveTrain extends Subsystem{
+	private CANTalon frontRight = new CANTalon(0);
+    private CANTalon backRight = new CANTalon(1);
+    private VictorSP frontLeft = new VictorSP(1);
     private VictorSP backLeft = new VictorSP(0);
     private RobotDrive drivetrain= new RobotDrive(frontLeft,backLeft,frontRight,backRight);
 
     public DriveTrain() {
-		super("DriveTrain", 7,0.018,1.5);
-		setInputRange(3,100);
-		setAbsoluteTolerance(2);
 	}
    
     public void initDefaultCommand() {
     	setDefaultCommand(new StickDrive());
     }
-    public void drive(Joystick stick){
+    public void arcadeDrive(Joystick stick){
     	drivetrain.arcadeDrive(stick);
-        SmartDashboard.putNumber("Distance", Robot.oi.getUltrasonic().getValue()*0.125);
     }
-    public void drive(double forward, double turn){
+    public void arcadeDrive(double forward, double turn){
     	drivetrain.arcadeDrive(forward,turn);
     }
-    @Override
-    protected double returnPIDInput() {
-        return Robot.oi.getUltrasonic().getValue()*0.125;
+    public void tankDrive(Joystick joystickLeft, Joystick joystickRight){
+        drivetrain.tankDrive(joystickLeft,joystickRight);
     }
-
-    @Override
-    protected void usePIDOutput(double output) {
-        SmartDashboard.putNumber("PID Output", output);
-        drivetrain.arcadeDrive(output*-1,0);
+    public void tankDrive(double leftValue, double rightValue){
+        drivetrain.tankDrive(leftValue,rightValue);
     }
 }
 
