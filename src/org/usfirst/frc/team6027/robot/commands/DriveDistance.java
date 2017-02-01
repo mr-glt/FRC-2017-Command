@@ -10,7 +10,7 @@ public class DriveDistance extends Command {
 
     public DriveDistance(double setpoint){
         requires(Robot.drivetrain);
-        pid = new PIDController(0.27, 0, 0, Robot.gyro.getGyro(), new pidOutput());
+        pid = new PIDController(0.27, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidOutput());
         pid.setAbsoluteTolerance(1);
         pid.setSetpoint(setpoint);
     }
