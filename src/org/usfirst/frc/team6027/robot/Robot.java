@@ -16,8 +16,9 @@ import org.usfirst.frc.team6027.robot.subsystems.Vision;
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain drivetrain = new DriveTrain();
-	public static DriveEncoders driveEncoders = new DriveEncoders(0,1,2,3,0.1, 10, 0.0095238095,true,7);
-	public static Ultrasonic ultrasonic = new Ultrasonic(0.125,0);
+	public static DriveEncoders driveEncoders = new DriveEncoders(RobotMap.leftEncoderA,RobotMap.leftEncoderB,RobotMap.rightEncoderA, RobotMap.rightEncoderB,
+			RobotMap.encoderMaxPeriod, RobotMap.encoderMinRate, RobotMap.encoderDPP,RobotMap.encoderReverseDirection,RobotMap.encoderSamplesToAvg);
+	public static Ultrasonic ultrasonic = new Ultrasonic(RobotMap.valueToInches,RobotMap.ultrasonicPort);
 	public static Gyro gyro = new Gyro();
 	public static Vision vision = new Vision();
 	public static OI oi = new OI();

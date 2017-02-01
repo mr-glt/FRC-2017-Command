@@ -9,12 +9,9 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team6027.robot.GripPipeline;
+import org.usfirst.frc.team6027.robot.RobotMap;
 
 public class Vision extends Subsystem {
-
-    private static final int IMG_WIDTH = 320;
-    private static final int IMG_HEIGHT = 240;
-    private static final double FOV = 66;
     private double centerX = 0.0;
     private VisionThread visionThread;
     private final Object imgLock = new Object();
@@ -29,8 +26,8 @@ public class Vision extends Subsystem {
     public void setUpCamera(){
         CameraServer.getInstance().startAutomaticCapture();
         camera = CameraServer.getInstance().startAutomaticCapture();
-        camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
-        camera.setExposureManual(5);
+        camera.setResolution(RobotMap.IMG_WIDTH, RobotMap.IMG_HEIGHT);
+        camera.setExposureManual(RobotMap.exposure);
         visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
             if (!pipeline.filterContoursOutput().isEmpty()) {
                 Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
@@ -48,7 +45,7 @@ public class Vision extends Subsystem {
         synchronized (imgLock) {
             centerX = this.centerX;
         }
-        return (centerX - (IMG_WIDTH / 2))*(FOV/IMG_WIDTH);
+        return (centerX - (RobotMap.IMG_WIDTH / 2))*(RobotMap.FOV/RobotMap.IMG_WIDTH);
     }
 
 }
