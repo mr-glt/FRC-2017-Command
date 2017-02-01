@@ -18,7 +18,7 @@ public class DriveTrain extends Subsystem{
     private RobotDrive drivetrain= new RobotDrive(frontLeft,backLeft,frontRight,backRight);
 
     public DriveTrain() {
-	}
+	  }
    
     public void initDefaultCommand() {
     	setDefaultCommand(new StickDrive());

@@ -13,7 +13,6 @@ public class Ultrasonic extends Subsystem {
     public Ultrasonic(double valueToInches, int port){
         valueToInches = this.valueToInches;
         port = this.port;
-
         ultrasonic = new AnalogInput(port);
         lastLocation = ultrasonic.getValue() * valueToInches;
     }

@@ -20,7 +20,7 @@ public class RotateDriveTrain extends Command{
 
     @Override
     protected void initialize() {
-        pid.reset();
+      pid.reset();
     	pid.enable();
     }
 
