@@ -11,7 +11,7 @@ public class DriveDistance extends Command {
     public DriveDistance(double setpoint){
         requires(Robot.drivetrain);
         pid = new PIDController(0.27, 0, 0, Robot.gyro.getGyro(), new pidOutput());
-        pid.setAbsoluteTolerance(2);
+        pid.setAbsoluteTolerance(1);
         pid.setSetpoint(setpoint);
     }
     @Override
@@ -32,6 +32,7 @@ public class DriveDistance extends Command {
     @Override
     protected void end() {
         pid.disable();
+        pid.reset();
     }
 
     @Override

@@ -14,18 +14,19 @@ public class RotateDriveTrain extends Command{
     public RotateDriveTrain(double theta){
         requires(Robot.drivetrain);
         pid = new PIDController(0.27, 0, 0, Robot.gyro.getGyro(), new pidOutput());
-        pid.setAbsoluteTolerance(1);
+        pid.setAbsoluteTolerance(2);
         pid.setSetpoint(theta);
     }
 
     @Override
     protected void initialize() {
-        pid.enable();
+        pid.reset();
+    	pid.enable();
     }
 
     @Override
     protected void execute() {
-
+    	SmartDashboard.putBoolean("OnTarget", false);
     }
 
     @Override
@@ -37,6 +38,7 @@ public class RotateDriveTrain extends Command{
     protected void end() {
         pid.disable();
         pid.reset();
+        SmartDashboard.putBoolean("OnTarget", true);
     }
 
     @Override

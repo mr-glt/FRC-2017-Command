@@ -3,6 +3,7 @@ package org.usfirst.frc.team6027.robot.subsystems;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 
 import org.opencv.core.Rect;
@@ -28,6 +29,7 @@ public class Vision extends Subsystem {
         CameraServer.getInstance().startAutomaticCapture();
         camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+        camera.setExposureManual(5);
         visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
             if (!pipeline.filterContoursOutput().isEmpty()) {
                 Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));

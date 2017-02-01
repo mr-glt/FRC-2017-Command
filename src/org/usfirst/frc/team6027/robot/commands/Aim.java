@@ -9,22 +9,22 @@ public class Aim extends Command {
     }
     @Override
     protected void initialize() {
-        Robot.vision.startProcessing();
+        
     }
 
     @Override
     protected void execute() {
-        Robot.drivetrain.drive(0, Robot.vision.getTurn()*0.005);
+    	new RotateDriveTrain(Robot.vision.getTurn());
     }
 
     @Override
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     @Override
     protected void end() {
-        Robot.drivetrain.drive(0, 0);
+        Robot.drivetrain.arcadeDrive(0,0);
     }
 
     @Override

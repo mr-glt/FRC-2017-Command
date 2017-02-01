@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6027.robot.commands.Autonomous;
+import org.usfirst.frc.team6027.robot.subsystems.DriveEncoders;
 import org.usfirst.frc.team6027.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6027.robot.subsystems.Gyro;
 import org.usfirst.frc.team6027.robot.subsystems.Ultrasonic;
@@ -26,6 +27,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		vision.setUpCamera();
+		vision.startProcessing();
 		autonomousCommand = new Autonomous();
 		SmartDashboard.putData(drivetrain);
 	}
