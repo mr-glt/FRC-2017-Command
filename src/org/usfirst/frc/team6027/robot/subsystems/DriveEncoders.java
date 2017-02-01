@@ -56,4 +56,10 @@ public class DriveEncoders extends Subsystem {
         encoderLeft.reset();
         encoderRight.reset();
     }
+    public Encoder getEncoderLeft(){
+        return encoderLeft;
+    }
+    public Encoder getEncoderRight(){
+        return encoderRight;
+    }
 }

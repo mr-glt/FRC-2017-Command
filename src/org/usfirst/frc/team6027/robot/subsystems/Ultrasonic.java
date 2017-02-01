@@ -2,12 +2,13 @@ package org.usfirst.frc.team6027.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team6027.robot.RobotMap;
 
 public class Ultrasonic extends Subsystem {
-    private double valueToInches = 0.125;
-    private int port = 0;
+    private double valueToInches = RobotMap.valueToInches;
     private AnalogInput ultrasonic;
     private Double lastLocation;
+    int port = RobotMap.ultrasonicPort;
 
     public Ultrasonic(double valueToInches, int port){
         valueToInches = this.valueToInches;
