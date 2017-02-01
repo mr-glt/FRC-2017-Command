@@ -14,6 +14,7 @@ public class Vision extends Subsystem {
 
     private static final int IMG_WIDTH = 320;
     private static final int IMG_HEIGHT = 240;
+    private static final double FOV = 66;
     private double centerX = 0.0;
     private VisionThread visionThread;
     private final Object imgLock = new Object();
@@ -47,7 +48,7 @@ public class Vision extends Subsystem {
         synchronized (imgLock) {
             centerX = this.centerX;
         }
-        return centerX - (IMG_WIDTH / 2);
+        return (centerX - (IMG_WIDTH / 2))*(FOV/IMG_WIDTH);
     }
 
 }
