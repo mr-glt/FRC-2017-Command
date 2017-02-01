@@ -27,4 +27,6 @@ public class RobotMap {
     public static final int exposure = 5;
     public static final double FOV = 66;
 
+    public static int mainFlywheelPort = 4;
+    public static int meterWheelPort = 5;
 }

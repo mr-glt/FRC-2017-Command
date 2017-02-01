@@ -19,6 +19,8 @@ public class Robot extends IterativeRobot {
 	public static Vision vision = new Vision();
 	public static GDS gds = new GDS();
 	public static Pickup pickup = new Pickup();
+	public static Flywheel flywheel = new Flywheel();
+	public static Meter meter = new Meter();
 	public static OI oi = new OI();
 
 	Command autonomousCommand;
