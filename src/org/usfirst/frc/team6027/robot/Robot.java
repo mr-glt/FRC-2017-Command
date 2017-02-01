@@ -7,11 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6027.robot.commands.Autonomous;
-import org.usfirst.frc.team6027.robot.subsystems.DriveEncoders;
-import org.usfirst.frc.team6027.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team6027.robot.subsystems.Gyro;
-import org.usfirst.frc.team6027.robot.subsystems.Ultrasonic;
-import org.usfirst.frc.team6027.robot.subsystems.Vision;
+import org.usfirst.frc.team6027.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
 
@@ -21,6 +17,8 @@ public class Robot extends IterativeRobot {
 	public static Ultrasonic ultrasonic = new Ultrasonic(RobotMap.valueToInches,RobotMap.ultrasonicPort);
 	public static Gyro gyro = new Gyro();
 	public static Vision vision = new Vision();
+	public static GDS gds = new GDS();
+	public static Pickup pickup = new Pickup();
 	public static OI oi = new OI();
 
 	Command autonomousCommand;

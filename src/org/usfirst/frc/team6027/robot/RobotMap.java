@@ -6,6 +6,7 @@ public class RobotMap {
     public static int backLeft = 0;
     public static int frontRight = 0;
     public static int backRight = 1;
+    public static int pickup = 2;
 
     //Sensors
     public static int ultrasonicPort = 0;
