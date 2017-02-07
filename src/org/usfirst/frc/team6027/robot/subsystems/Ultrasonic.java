@@ -29,4 +29,7 @@ public class Ultrasonic extends Subsystem {
     public double getDistanceGone(){
         return ultrasonic.getValue()*valueToInches - lastLocation;
     }
+    public AnalogInput getUltrasonic(){
+        return ultrasonic;
+    }
 }
