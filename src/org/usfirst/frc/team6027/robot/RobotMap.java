@@ -7,7 +7,9 @@ public class RobotMap {
     public static int frontRight = 0;
     public static int backRight = 1;
     public static int pickup = 2;
-
+    public static int mainFlywheelPort = 4;
+    public static int meterWheelPort = 5;
+    public static int winchPort = 8;
     //Sensors
     public static int ultrasonicPort = 0;
     public static int leftEncoderA = 0;
@@ -27,6 +29,4 @@ public class RobotMap {
     public static final int exposure = 5;
     public static final double FOV = 66;
 
-    public static int mainFlywheelPort = 4;
-    public static int meterWheelPort = 5;
 }
