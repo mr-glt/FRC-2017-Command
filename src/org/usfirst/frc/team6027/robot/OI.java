@@ -3,7 +3,7 @@ package org.usfirst.frc.team6027.robot;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import org.usfirst.frc.team6027.robot.commands.RotateDriveTrain;
+import org.usfirst.frc.team6027.robot.commands.*;
 
 public class OI {
 	private Joystick stick = new Joystick(RobotMap.joystickPort);
@@ -11,10 +11,18 @@ public class OI {
 	private DigitalInput winchLimit = new DigitalInput(RobotMap.winchLimitPort);
 
 	public OI(){
-		JoystickButton aim = new JoystickButton(stick, 5);
-		JoystickButton trigger = new JoystickButton(stick, 7);
-		aim.whenPressed(new RotateDriveTrain(Robot.vision.getTurn()*0.1875));
-		trigger.whenPressed(new RotateDriveTrain(-30));
+		JoystickButton x = new JoystickButton(controller, 0);
+		JoystickButton y = new JoystickButton(controller, 1);
+		JoystickButton a = new JoystickButton(controller, 2);
+		JoystickButton b = new JoystickButton(controller, 3);
+		JoystickButton rb = new JoystickButton(controller, 4);
+		JoystickButton lb = new JoystickButton(controller, 5);
+
+		a.toggleWhenPressed(new PickupOn());
+		b.whileHeld(new PickupReverse());
+		y.whileHeld(new OpenGDS());
+		x.whenPressed(new Climb());
+		rb.whileHeld(new Shoot());
 
 	}
 	public Joystick getJoystick(){
