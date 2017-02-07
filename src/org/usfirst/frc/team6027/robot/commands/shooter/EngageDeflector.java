@@ -3,18 +3,17 @@ package org.usfirst.frc.team6027.robot.commands.shooter;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6027.robot.Robot;
 
-public class SpinMeter extends Command{
-    public SpinMeter(){
-        requires(Robot.meter);
+public class EngageDeflector extends Command {
+    public EngageDeflector(){
+        requires(Robot.deflector);
     }
     @Override
     protected void initialize() {
-        setTimeout(10);
     }
 
     @Override
     protected void execute() {
-        Robot.meter.spinMeterUp();
+        Robot.deflector.engaged();
     }
 
     @Override
@@ -24,11 +23,11 @@ public class SpinMeter extends Command{
 
     @Override
     protected void end() {
-        Robot.meter.spinMeterDown();
+        Robot.deflector.disengaged();
     }
 
     @Override
     protected void interrupted() {
-        Robot.meter.spinMeterDown();
+        Robot.deflector.disengaged();
     }
 }
