@@ -47,5 +47,11 @@ public class Vision extends Subsystem {
         }
         return (centerX - (RobotMap.IMG_WIDTH / 2))*(RobotMap.FOV/RobotMap.IMG_WIDTH);
     }
+    public void setAnalyzeExposure(){
+        camera.setExposureManual(RobotMap.exposure);
+    }
+    public void setRegularExposure(){
+        camera.setExposureManual(RobotMap.regularExposure);
+    }
 
 }

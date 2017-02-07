@@ -24,6 +24,7 @@ public class RobotMap {
     public static final int IMG_WIDTH = 320;
     public static final int IMG_HEIGHT = 240;
     public static final int exposure = 5;
+    public static final int regularExposure = 40;
     public static final double FOV = 66;
 
 }
