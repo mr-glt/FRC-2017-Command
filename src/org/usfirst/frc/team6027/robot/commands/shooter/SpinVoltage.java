@@ -11,6 +11,7 @@ public class SpinVoltage extends Command {
     }
     @Override
     protected void initialize() {
+        setTimeout(10);
     }
 
     @Override

@@ -3,6 +3,9 @@ package org.usfirst.frc.team6027.robot.commands.shooter;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6027.robot.Robot;
 
+/**
+ * Created by colso on 1/23/2017.
+ */
 public class SpinMeter extends Command{
     public SpinMeter(){
         requires(Robot.meter);

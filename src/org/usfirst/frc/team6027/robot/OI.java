@@ -22,8 +22,8 @@ public class OI {
 		b.whileHeld(new PickupReverse());
 		y.whileHeld(new OpenGDS());
 		x.whenPressed(new Climb());
-		rb.whileHeld(new Shoot(true));
-		lb.whileHeld(new Shoot(false));
+		rb.whileHeld(new Shoot());
+
 	}
 	public Joystick getJoystick(){
 		return stick;

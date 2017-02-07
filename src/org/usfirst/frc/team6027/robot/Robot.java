@@ -22,7 +22,6 @@ public class Robot extends IterativeRobot {
 	public static Flywheel flywheel = new Flywheel();
 	public static Meter meter = new Meter();
 	public static Winch winch = new Winch();
-	public static Deflector deflector = new Deflector();
 	public static OI oi = new OI();
 
 	Command autonomousCommand;
