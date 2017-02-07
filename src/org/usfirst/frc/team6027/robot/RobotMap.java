@@ -29,4 +29,7 @@ public class RobotMap {
     public static final int exposure = 5;
     public static final double FOV = 66;
 
+    //OI Ports
+    public static final int joystickPort = 0;
+    public static final int controllerPort = 1;
 }

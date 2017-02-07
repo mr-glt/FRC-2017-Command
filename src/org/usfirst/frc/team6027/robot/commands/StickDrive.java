@@ -14,7 +14,7 @@ public class StickDrive extends Command {
     }
 
     protected void execute() {
-    	Robot.drivetrain.arcadeDrive(Robot.oi.getJoystick());
+    	Robot.drivetrain.arcadeDrive(Robot.oi.getController().getRawAxis(1), Robot.oi.getController().getRawAxis(4));
     }
 
     protected boolean isFinished() {
