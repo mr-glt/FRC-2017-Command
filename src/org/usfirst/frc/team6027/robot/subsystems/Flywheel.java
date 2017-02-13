@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team6027.robot.RobotMap;
 
 public class Flywheel extends Subsystem {
-    CANTalon mainFlywheel = new CANTalon(RobotMap.mainFlywheelPort);
+    private CANTalon mainFlywheel = new CANTalon(RobotMap.mainFlywheelPort);
 
     public Flywheel(){
 
@@ -14,6 +14,7 @@ public class Flywheel extends Subsystem {
     protected void initDefaultCommand() {
 
     }
+    /*
     public void setFlywheelRPM(double rpm, boolean isReverse){
         if(isReverse){
             mainFlywheel.setSetpoint(-rpm);
@@ -22,6 +23,7 @@ public class Flywheel extends Subsystem {
             mainFlywheel.setSetpoint(rpm);
         }
     }
+    */
     public void setFlywheelVoltage(double voltage, boolean isReverse){
         if(isReverse){
             mainFlywheel.set(-voltage);
@@ -33,4 +35,3 @@ public class Flywheel extends Subsystem {
         mainFlywheel.set(0);
     }
 }
-
