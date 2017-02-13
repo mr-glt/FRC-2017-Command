@@ -11,7 +11,7 @@ public class SpinUp extends Command {
     }
     @Override
     protected void initialize() {
-        setTimeout(10);
+        setTimeout(4);
     }
 
     @Override
