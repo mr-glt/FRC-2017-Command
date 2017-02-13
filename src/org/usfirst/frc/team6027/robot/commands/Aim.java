@@ -6,10 +6,11 @@ import org.usfirst.frc.team6027.robot.Robot;
 public class Aim extends Command {
     public Aim() {
         requires(Robot.vision);
+        requires(Robot.drivetrain);
     }
     @Override
     protected void initialize() {
-        
+        Robot.vision.setAnalyzeExposure();
     }
 
     @Override
@@ -25,6 +26,7 @@ public class Aim extends Command {
     @Override
     protected void end() {
         Robot.drivetrain.arcadeDrive(0,0);
+        Robot.vision.setRegularExposure();
     }
 
     @Override
