@@ -2,14 +2,21 @@ package org.usfirst.frc.team6027.robot;
 
 public class RobotMap {
     //Motor Controllers
-    public static int frontLeft = 1;
-    public static int backLeft = 0;
-    public static int frontRight = 0;
-    public static int backRight = 1;
-    public static int pickup = 2;
-    public static int mainFlywheelPort = 4;
-    public static int meterWheelPort = 5;
-    public static int winchPort = 8;
+    public static int frontLeft = 0;
+    public static int backLeft = 1;
+    public static int frontRight = 2;
+    public static int backRight = 3;
+    public static int pickup = 4;
+    public static int mainFlywheelPort = 5;
+    public static int meterWheelPort = 6;
+    public static int winchPort = 7;
+
+    //Solenoids
+    public static int solGDSOne;
+    public static int solGDSTwo;
+    public static int solWinchOne;
+    public static int getSolWinchTwo;
+
     //Sensors
     public static int ultrasonicPort = 0;
     public static int leftEncoderA = 0;
