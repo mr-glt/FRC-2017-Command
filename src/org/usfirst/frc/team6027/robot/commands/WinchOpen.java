@@ -3,35 +3,30 @@ package org.usfirst.frc.team6027.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6027.robot.Robot;
 
-public class Climb extends Command{
-    public Climb(){
+public class WinchOpen extends Command {
+    public WinchOpen(){
         requires(Robot.winch);
     }
     @Override
     protected void initialize() {
-        Robot.winch.breakMode(false);
     }
 
     @Override
     protected void execute() {
-        Robot.winch.on();
+        Robot.winch.setLock(false);
     }
 
     @Override
     protected boolean isFinished() {
-        return Robot.oi.getWinchLimit().get();
+        return true;
     }
 
     @Override
     protected void end() {
-        Robot.winch.breakMode(true);
-        Robot.winch.off();
     }
 
 
     @Override
     protected void interrupted() {
-        Robot.winch.breakMode(true);
-        Robot.winch.off();
     }
 }

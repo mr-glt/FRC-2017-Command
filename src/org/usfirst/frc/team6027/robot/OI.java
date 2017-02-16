@@ -16,12 +16,16 @@ public class OI {
 		JoystickButton b = new JoystickButton(controller, 2);
 		JoystickButton rb = new JoystickButton(controller, 6);
 		JoystickButton lb = new JoystickButton(controller, 5);
+		JoystickButton start = new JoystickButton(controller, 8);
+		JoystickButton back = new JoystickButton(controller,7);
 
 		a.toggleWhenPressed(new PickupOn());
 		b.whileHeld(new PickupReverse());
 		y.whileHeld(new OpenGDS());
 		x.whenPressed(new Climb());
 		rb.whileHeld(new Shoot());
+		start.whenPressed(new WinchClose());
+		back.whenPressed(new WinchOpen());
 
 	}
 	public Joystick getController(){

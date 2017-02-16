@@ -15,7 +15,7 @@ public class RobotMap {
     public static int solGDSOne;
     public static int solGDSTwo;
     public static int solWinchOne;
-    public static int getSolWinchTwo;
+    public static int solWinchTwo;
 
     //Sensors
     public static int ultrasonicPort = 0;
