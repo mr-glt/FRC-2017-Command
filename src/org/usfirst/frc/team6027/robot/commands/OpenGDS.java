@@ -19,14 +19,16 @@ public class OpenGDS extends Command{
 
     @Override
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     @Override
     protected void end() {
+    	Robot.gds.close();
     }
 
     @Override
     protected void interrupted() {
+    	Robot.gds.close();
     }
 }

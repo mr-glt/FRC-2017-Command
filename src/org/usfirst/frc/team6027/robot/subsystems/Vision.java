@@ -16,6 +16,7 @@ public class Vision extends Subsystem {
     private VisionThread visionThread;
     private final Object imgLock = new Object();
     UsbCamera camera;
+    boolean isOne = true;
     public Vision() {
         super();
     }
@@ -27,7 +28,7 @@ public class Vision extends Subsystem {
         CameraServer.getInstance().startAutomaticCapture();
         camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(RobotMap.IMG_WIDTH, RobotMap.IMG_HEIGHT);
-        camera.setExposureManual(RobotMap.exposure);
+        //camera.setExposureManual(RobotMap.exposure);
         visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
             if (!pipeline.filterContoursOutput().isEmpty()) {
                 Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));

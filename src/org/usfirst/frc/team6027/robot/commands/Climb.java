@@ -9,7 +9,7 @@ public class Climb extends Command{
     }
     @Override
     protected void initialize() {
-        Robot.winch.breakMode(false);
+        //Robot.winch.breakMode(false);
     }
 
     @Override
@@ -19,19 +19,19 @@ public class Climb extends Command{
 
     @Override
     protected boolean isFinished() {
-        return Robot.oi.getWinchLimit().get();
+        return false;
     }
 
     @Override
     protected void end() {
-        Robot.winch.breakMode(true);
+        //Robot.winch.breakMode(true);
         Robot.winch.off();
     }
 
 
     @Override
     protected void interrupted() {
-        Robot.winch.breakMode(true);
+        //Robot.winch.breakMode(true);
         Robot.winch.off();
     }
 }

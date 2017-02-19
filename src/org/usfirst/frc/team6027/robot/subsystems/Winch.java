@@ -16,7 +16,7 @@ public class Winch extends Subsystem{
 
     }
     public void on(){
-        winch.set(0.5);
+        winch.set(0.80);
     }
     public void off(){
         winch.set(0);

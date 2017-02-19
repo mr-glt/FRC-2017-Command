@@ -6,13 +6,13 @@ import org.usfirst.frc.team6027.robot.RobotMap;
 import org.usfirst.frc.team6027.robot.commands.OpenGDS;
 
 public class GDS extends Subsystem{
-    private DoubleSolenoid sol = new DoubleSolenoid(RobotMap.solGDSOne,RobotMap.solGDSTwo);
+    private DoubleSolenoid sol = new DoubleSolenoid(10,2,1);
     public GDS(){
         super();
     }
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new OpenGDS());
+        //setDefaultCommand(new OpenGDS());
     }
     public void open(){
         sol.set(DoubleSolenoid.Value.kForward);

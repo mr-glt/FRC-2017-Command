@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team6027.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -44,6 +45,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Right Gear", rightGearAuto);
 		chooser.addObject("Boiler", boilerAuto);
 		SmartDashboard.putData("Auto choices", chooser);
+		Compressor c = new Compressor(10);
+		c.setClosedLoopControl(true);
 	}
 
 	@Override
