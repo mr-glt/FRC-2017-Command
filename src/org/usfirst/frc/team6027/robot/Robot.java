@@ -3,11 +3,13 @@ package org.usfirst.frc.team6027.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team6027.robot.commands.StartEndTimer;
 import org.usfirst.frc.team6027.robot.subsystems.*;
 import org.usfirst.frc.team6027.robot.commands.auto.*;
 
@@ -25,6 +27,7 @@ public class Robot extends IterativeRobot {
 	public static Meter meter = new Meter();
 	public static Winch winch = new Winch();
 	public static WinchPush winchPush = new WinchPush();
+	public static FieldTimer fieldTimer = new FieldTimer();
 	public static OI oi = new OI();
 	private final String forwardAuto = "Forward Drive";
 	private final String centerGearAuto = "Center Gear";
@@ -34,6 +37,7 @@ public class Robot extends IterativeRobot {
 	private SendableChooser<String> chooser = new SendableChooser<>();
 
 	private CommandGroup autonomousCommandGroup;
+	private Command endTimer = new StartEndTimer();
 
 	@Override
 	public void robotInit() {
@@ -92,6 +96,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		if(autonomousCommandGroup!=null) autonomousCommandGroup.cancel();
+		endTimer.start();
 	}
 
 	@Override
