@@ -35,7 +35,7 @@ public class DriveEncoders extends Subsystem {
         return encoderRight.getDistance();
     }
     public double distanceDriven() {
-        return (encoderLeft.getDistance()+encoderRight.getDistance())/2;
+        return encoderLeft.getDistance();
     }
 
     public int leftCount() {

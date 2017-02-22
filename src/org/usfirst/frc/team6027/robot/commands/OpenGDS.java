@@ -4,8 +4,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6027.robot.Robot;
 
 public class OpenGDS extends Command{
-    public OpenGDS() {
+    public OpenGDS(double timeout) {
         requires(Robot.gds);
+        setTimeout(timeout);
     }
     @Override
     protected void initialize() {

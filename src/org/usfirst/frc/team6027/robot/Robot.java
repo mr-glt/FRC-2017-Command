@@ -24,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static Flywheel flywheel = new Flywheel();
 	public static Meter meter = new Meter();
 	public static Winch winch = new Winch();
+	public static WinchPush winchPush = new WinchPush();
 	public static OI oi = new OI();
 	private final String forwardAuto = "Forward Drive";
 	private final String centerGearAuto = "Center Gear";
@@ -37,7 +38,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		vision.setUpCamera();
-		vision.startProcessing();
 		SmartDashboard.putData(drivetrain);
 		chooser.addDefault("Forward Drive", forwardAuto);
 		chooser.addObject("Center Gear", centerGearAuto);

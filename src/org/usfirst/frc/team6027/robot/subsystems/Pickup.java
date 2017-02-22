@@ -11,7 +11,7 @@ public class Pickup extends Subsystem{
 
     }
     public void pickUp(){
-        controller.set(1);
+        controller.set(0.8);
     }
     public void reverse(){
         controller.set(-1);

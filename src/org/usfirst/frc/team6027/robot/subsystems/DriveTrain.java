@@ -8,7 +8,6 @@ import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.VictorSP;
 
 public class DriveTrain extends Subsystem{
 	private CANTalon frontRight = new CANTalon(RobotMap.frontRight);

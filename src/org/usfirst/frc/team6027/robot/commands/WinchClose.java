@@ -5,7 +5,7 @@ import org.usfirst.frc.team6027.robot.Robot;
 
 public class WinchClose extends Command {
     public WinchClose(){
-        requires(Robot.winch);
+        requires(Robot.winchPush);
     }
     @Override
     protected void initialize() {
@@ -13,20 +13,22 @@ public class WinchClose extends Command {
 
     @Override
     protected void execute() {
-        Robot.winch.setLock(true);
+        Robot.winchPush.setLock(true);
     }
 
     @Override
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     @Override
     protected void end() {
+    	Robot.winchPush.setLock(false);
     }
 
 
     @Override
     protected void interrupted() {
+    	Robot.winchPush.setLock(false);
     }
 }

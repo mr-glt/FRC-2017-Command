@@ -1,10 +1,8 @@
 package org.usfirst.frc.team6027.robot;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team6027.robot.commands.*;
-import org.usfirst.frc.team6027.robot.commands.shooter.SpinRPM;
 import org.usfirst.frc.team6027.robot.commands.shooter.SpinVoltage;
 
 public class OI {
@@ -22,13 +20,11 @@ public class OI {
 
 		a.toggleWhenPressed(new PickupOn());
 		b.whileHeld(new PickupReverse());
-		y.whileHeld(new OpenGDS());
+		y.whileHeld(new OpenGDS(5));
 		x.whileHeld(new Climb());
-		rb.whileHeld(new SpinVoltage(0.65));
-		start.whenPressed(new WinchClose());
-		back.whenPressed(new WinchOpen());
-		//lb.whileHeld(new SpinRPM(400));
-
+		rb.whileHeld(new SpinVoltage(0.69));
+		start.toggleWhenPressed(new WinchClose());
+		lb.whileHeld(new InvertedStickDrive());
 	}
 	public Joystick getController(){
 		return controller;

@@ -4,9 +4,9 @@ import org.usfirst.frc.team6027.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class StickDrive extends Command {
+public class InvertedStickDrive extends Command {
 
-    public StickDrive() {
+    public InvertedStickDrive() {
     	requires(Robot.drivetrain);
     }
 
@@ -14,7 +14,7 @@ public class StickDrive extends Command {
     }
 
     protected void execute() {
-    	Robot.drivetrain.arcadeDrive(-Robot.oi.getController().getRawAxis(1), -Robot.oi.getController().getRawAxis(4));
+    	Robot.drivetrain.arcadeDrive(Robot.oi.getController().getRawAxis(1)*0.6, -Robot.oi.getController().getRawAxis(4)*0.75);
     }
 
     protected boolean isFinished() {
@@ -26,5 +26,6 @@ public class StickDrive extends Command {
     }
 
     protected void interrupted() {
+    	Robot.drivetrain.arcadeDrive(0,0);
     }
 }

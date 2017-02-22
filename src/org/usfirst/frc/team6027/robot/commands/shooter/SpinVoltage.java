@@ -8,6 +8,7 @@ public class SpinVoltage extends Command {
     public SpinVoltage(double voltage){
         this.voltage = voltage;
         requires(Robot.flywheel);
+        requires(Robot.meter);
     }
     @Override
     protected void initialize() {
@@ -16,6 +17,7 @@ public class SpinVoltage extends Command {
     @Override
     protected void execute() {
         Robot.flywheel.setFlywheelVoltage(voltage, false);
+        Robot.meter.spinMeterUp();
     }
 
     @Override
@@ -26,10 +28,12 @@ public class SpinVoltage extends Command {
     @Override
     protected void end() {
         Robot.flywheel.stopFlywheel();
+        Robot.meter.spinMeterDown();
     }
 
     @Override
     protected void interrupted() {
         Robot.flywheel.stopFlywheel();
+        Robot.meter.spinMeterDown();
     }
 }
