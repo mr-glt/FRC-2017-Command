@@ -14,16 +14,12 @@ public class Flywheel extends Subsystem {
     protected void initDefaultCommand() {
 
     }
-    /*
-    public void setFlywheelRPM(double rpm, boolean isReverse){
-        if(isReverse){
-            mainFlywheel.setSetpoint(-rpm);
-        }
-        else{
-            mainFlywheel.setSetpoint(rpm);
-        }
-    }
-    */
+
+    /**
+     * Method to set the flywheel voltage.
+     * @param voltage sets the power level of the flywheel
+     * @param isReverse sets if the flywheel direction is reversed
+     */
     public void setFlywheelVoltage(double voltage, boolean isReverse){
         if(isReverse){
             mainFlywheel.set(-voltage);
@@ -31,6 +27,10 @@ public class Flywheel extends Subsystem {
             mainFlywheel.set(voltage);
         }
     }
+
+    /**
+     * Sets the flywheel to zero.
+     */
     public void stopFlywheel(){
         mainFlywheel.set(0);
     }
