@@ -1,33 +1,38 @@
 package org.usfirst.frc.team6027.robot.subsystems;
 
+import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team6027.robot.RobotMap;
 import org.usfirst.frc.team6027.robot.commands.StickDrive;
 
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class DriveTrain extends Subsystem {
-	private CANTalon backRight = new CANTalon(0);
-    private CANTalon frontLeft = new CANTalon(1);
-    private VictorSP frontRight = new VictorSP(1);
-    private VictorSP backLeft = new VictorSP(0);
+public class DriveTrain extends Subsystem{
+	private CANTalon frontRight = new CANTalon(RobotMap.frontRight);
+    private CANTalon backRight = new CANTalon(RobotMap.backRight);
+    private CANTalon frontLeft = new CANTalon(RobotMap.frontLeft);
+    private CANTalon backLeft = new CANTalon(RobotMap.backLeft);
     private RobotDrive drivetrain= new RobotDrive(frontLeft,backLeft,frontRight,backRight);
-	
+
     public DriveTrain() {
-		super();
-	}
-    
+	  }
+   
     public void initDefaultCommand() {
     	setDefaultCommand(new StickDrive());
     }
-    public void drive(Joystick stick){
+    public void arcadeDrive(Joystick stick){
     	drivetrain.arcadeDrive(stick);
     }
-    public void drive(double forward, double turn){
+    public void arcadeDrive(double forward, double turn){
     	drivetrain.arcadeDrive(forward,turn);
+    }
+    public void tankDrive(Joystick joystickLeft, Joystick joystickRight){
+        drivetrain.tankDrive(joystickLeft,joystickRight);
+    }
+    public void tankDrive(double leftValue, double rightValue){
+        drivetrain.tankDrive(leftValue,rightValue);
     }
 }
 
