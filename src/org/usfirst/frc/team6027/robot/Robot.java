@@ -1,20 +1,15 @@
 
 package org.usfirst.frc.team6027.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team6027.robot.commands.Autonomous;
+import org.usfirst.frc.team6027.robot.subsystems.*;
 import org.usfirst.frc.team6027.robot.commands.auto.*;
-import org.usfirst.frc.team6027.robot.subsystems.DriveEncoders;
-import org.usfirst.frc.team6027.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team6027.robot.subsystems.Gyro;
-import org.usfirst.frc.team6027.robot.subsystems.Ultrasonic;
-import org.usfirst.frc.team6027.robot.subsystems.Vision;
 
 public class Robot extends IterativeRobot {
 
@@ -24,6 +19,12 @@ public class Robot extends IterativeRobot {
 	public static Ultrasonic ultrasonic = new Ultrasonic(RobotMap.valueToInches,RobotMap.ultrasonicPort);
 	public static Gyro gyro = new Gyro();
 	public static Vision vision = new Vision();
+	public static GDS gds = new GDS();
+	public static Pickup pickup = new Pickup();
+	public static Flywheel flywheel = new Flywheel();
+	public static Meter meter = new Meter();
+	public static Winch winch = new Winch();
+	public static WinchPush winchPush = new WinchPush();
 	public static OI oi = new OI();
 	private final String forwardAuto = "Forward Drive";
 	private final String centerGearAuto = "Center Gear";
@@ -37,7 +38,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		vision.setUpCamera();
-		vision.startProcessing();
 		SmartDashboard.putData(drivetrain);
 		chooser.addDefault("Forward Drive", forwardAuto);
 		chooser.addObject("Center Gear", centerGearAuto);
@@ -45,6 +45,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Right Gear", rightGearAuto);
 		chooser.addObject("Boiler", boilerAuto);
 		SmartDashboard.putData("Auto choices", chooser);
+		Compressor c = new Compressor(10);
+		c.setClosedLoopControl(true);
 	}
 
 	@Override
@@ -89,7 +91,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		//autonomousCommandGroup.cancel();
+		if(autonomousCommandGroup!=null) autonomousCommandGroup.cancel();
 	}
 
 	@Override

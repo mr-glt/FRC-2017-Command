@@ -11,7 +11,7 @@ public class DriveDistance extends Command {
     public DriveDistance(double setpoint){
         requires(Robot.drivetrain);
         pid = new PIDController(0.27, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidOutput());
-        pid.setAbsoluteTolerance(1);
+        pid.setAbsoluteTolerance(3);
         pid.setSetpoint(setpoint);
     }
     @Override
@@ -33,11 +33,14 @@ public class DriveDistance extends Command {
     protected void end() {
         pid.disable();
         pid.reset();
+        Robot.driveEncoders.getEncoderLeft().reset();
     }
 
     @Override
     protected void interrupted() {
         pid.disable();
+        pid.reset();
+        Robot.driveEncoders.getEncoderLeft().reset();
     }
     private class pidOutput implements PIDOutput {
         @Override

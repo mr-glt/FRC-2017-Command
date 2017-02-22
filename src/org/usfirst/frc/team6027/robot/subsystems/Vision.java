@@ -3,7 +3,6 @@ package org.usfirst.frc.team6027.robot.subsystems;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 
 import org.opencv.core.Rect;
@@ -16,6 +15,7 @@ public class Vision extends Subsystem {
     private VisionThread visionThread;
     private final Object imgLock = new Object();
     UsbCamera camera;
+    boolean isOne = true;
     public Vision() {
         super();
     }
@@ -26,8 +26,8 @@ public class Vision extends Subsystem {
     public void setUpCamera(){
         CameraServer.getInstance().startAutomaticCapture();
         camera = CameraServer.getInstance().startAutomaticCapture();
-        camera.setResolution(RobotMap.IMG_WIDTH, RobotMap.IMG_HEIGHT);
-        camera.setExposureManual(RobotMap.exposure);
+        //camera.setResolution(RobotMap.IMG_WIDTH, RobotMap.IMG_HEIGHT);
+        //camera.setExposureManual(RobotMap.exposure);
         visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
             if (!pipeline.filterContoursOutput().isEmpty()) {
                 Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
@@ -46,6 +46,12 @@ public class Vision extends Subsystem {
             centerX = this.centerX;
         }
         return (centerX - (RobotMap.IMG_WIDTH / 2))*(RobotMap.FOV/RobotMap.IMG_WIDTH);
+    }
+    public void setAnalyzeExposure(){
+        camera.setExposureManual(RobotMap.exposure);
+    }
+    public void setRegularExposure(){
+        camera.setExposureManual(RobotMap.regularExposure);
     }
 
 }

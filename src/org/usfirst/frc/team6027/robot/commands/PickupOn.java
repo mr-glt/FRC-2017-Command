@@ -3,33 +3,32 @@ package org.usfirst.frc.team6027.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6027.robot.Robot;
 
-public class Aim extends Command {
-    public Aim() {
-        requires(Robot.vision);
-        requires(Robot.drivetrain);
+public class PickupOn extends Command{
+    public PickupOn() {
+        requires(Robot.pickup);
     }
     @Override
     protected void initialize() {
-        Robot.vision.setAnalyzeExposure();
+
     }
 
     @Override
     protected void execute() {
-    	new RotateDriveTrain(Robot.vision.getTurn());
+        Robot.pickup.pickUp();
     }
 
     @Override
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     @Override
     protected void end() {
-        Robot.drivetrain.arcadeDrive(0,0);
-        Robot.vision.setRegularExposure();
+        Robot.pickup.off();
     }
 
     @Override
     protected void interrupted() {
+        Robot.pickup.off();
     }
 }

@@ -3,33 +3,32 @@ package org.usfirst.frc.team6027.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6027.robot.Robot;
 
-public class Aim extends Command {
-    public Aim() {
-        requires(Robot.vision);
-        requires(Robot.drivetrain);
+public class WinchClose extends Command {
+    public WinchClose(){
+        requires(Robot.winchPush);
     }
     @Override
     protected void initialize() {
-        Robot.vision.setAnalyzeExposure();
     }
 
     @Override
     protected void execute() {
-    	new RotateDriveTrain(Robot.vision.getTurn());
+        Robot.winchPush.setLock(true);
     }
 
     @Override
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     @Override
     protected void end() {
-        Robot.drivetrain.arcadeDrive(0,0);
-        Robot.vision.setRegularExposure();
+    	Robot.winchPush.setLock(false);
     }
+
 
     @Override
     protected void interrupted() {
+    	Robot.winchPush.setLock(false);
     }
 }
