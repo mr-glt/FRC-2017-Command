@@ -10,30 +10,19 @@ import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team6027.robot.GripPipeline;
 import org.usfirst.frc.team6027.robot.RobotMap;
 
-/**
- * A subsystem to control cameras and vision processing.
- */
 public class Vision extends Subsystem {
     private double centerX = 0.0;
     private VisionThread visionThread;
     private final Object imgLock = new Object();
-    private UsbCamera camera;
+    UsbCamera camera;
     boolean isOne = true;
     public Vision() {
         super();
     }
-
-    /**
-     * No default command
-     */
     @Override
     protected void initDefaultCommand() {
 
     }
-
-    /**
-     * A method to start the camera and create a vision processing thread.
-     */
     public void setUpCamera(){
         CameraServer.getInstance().startAutomaticCapture();
         camera = CameraServer.getInstance().startAutomaticCapture();
@@ -48,18 +37,9 @@ public class Vision extends Subsystem {
             }
         });
     }
-
-    /**
-     * A method to start the vision processing thread.
-     */
     public void startProcessing(){
         visionThread.start();
     }
-
-    /**
-     *
-     * @return about the front of the robot is off target in degrees.
-     */
     public double getTurn(){
         double centerX;
         synchronized (imgLock) {
@@ -67,17 +47,9 @@ public class Vision extends Subsystem {
         }
         return (centerX - (RobotMap.IMG_WIDTH / 2))*(RobotMap.FOV/RobotMap.IMG_WIDTH);
     }
-
-    /**
-     * A method to set the exposure of the camera to a suitable level for vision processing.
-     */
     public void setAnalyzeExposure(){
         camera.setExposureManual(RobotMap.exposure);
     }
-
-    /**
-     * A method to set the exposure of the camera to a regular level.
-     */
     public void setRegularExposure(){
         camera.setExposureManual(RobotMap.regularExposure);
     }

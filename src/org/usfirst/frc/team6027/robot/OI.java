@@ -5,9 +5,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team6027.robot.commands.*;
 import org.usfirst.frc.team6027.robot.commands.shooter.SpinVoltage;
 
-/**
- * This is the operator interface. This is where buttons are connected to commands.
- */
 public class OI {
 	private Joystick controller = new Joystick(RobotMap.controllerPort);
 
