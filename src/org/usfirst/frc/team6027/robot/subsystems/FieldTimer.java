@@ -1,6 +1,9 @@
 package org.usfirst.frc.team6027.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team6027.robot.Robot;
+import org.usfirst.frc.team6027.robot.commands.ResetWinch;
 import org.usfirst.frc.team6027.robot.commands.WinchOpen;
 
 import java.util.Timer;
@@ -27,7 +30,8 @@ public class FieldTimer extends Subsystem{
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                new WinchOpen();
+                new ResetWinch();
+                Robot.oi.getController().setRumble(Joystick.RumbleType.kLeftRumble,1);
             }
         }, 105000); //105 seconds
     }
