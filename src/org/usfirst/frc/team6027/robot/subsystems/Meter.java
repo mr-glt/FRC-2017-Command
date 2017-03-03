@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6027.robot.subsystems;
 
 import com.ctre.CANTalon;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team6027.robot.RobotMap;
 
@@ -8,7 +9,7 @@ import org.usfirst.frc.team6027.robot.RobotMap;
  * A subsystem to control the metering wheel
  */
 public class Meter extends Subsystem {
-    private CANTalon meterWheel = new CANTalon(RobotMap.meterWheelPort);
+    private VictorSP meterWheel = new VictorSP(RobotMap.meterWheelPort);
     public Meter(){
     }
 

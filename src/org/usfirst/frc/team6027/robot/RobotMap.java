@@ -7,8 +7,8 @@ public class RobotMap {
     public static int frontRight = 0;
     public static int backRight = 1;
     public static int pickup = 3;
-    public static int mainFlywheelPort = 6;
-    public static int meterWheelPort = 7;
+    public static int mainFlywheelPort = 0;
+    public static int meterWheelPort = 1;
     public static int winchPort = 4;
 
     //Solenoids
