@@ -2,6 +2,7 @@ package org.usfirst.frc.team6027.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6027.robot.RobotMap;
 
 /**
@@ -31,6 +32,7 @@ public class WinchPush extends Subsystem{
         }else{
             sol.set(DoubleSolenoid.Value.kReverse);
         }
+        SmartDashboard.putBoolean("Winch Cylinder", value);
     }
 
 }

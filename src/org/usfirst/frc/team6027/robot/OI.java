@@ -25,6 +25,7 @@ public class OI {
 		rb.whileHeld(new SpinVoltage(0.69));
 		start.toggleWhenPressed(new WinchClose());
 		lb.whileHeld(new InvertedStickDrive());
+		back.whenPressed(new ResetWinch());
 	}
 	public Joystick getController(){
 		return controller;
