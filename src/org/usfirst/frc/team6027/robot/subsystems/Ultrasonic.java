@@ -3,6 +3,7 @@ package org.usfirst.frc.team6027.robot.subsystems;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team6027.robot.RobotMap;
+import org.usfirst.frc.team6027.robot.commands.Indicators;
 
 /**
  * A subsystem to control the ultrasonic sensors.
@@ -26,11 +27,11 @@ public class Ultrasonic extends Subsystem {
     }
 
     /**
-     * There is no default command
+     * Runs indicators on SmartDashboard to show when the robot can shoot and deliver a gear.
      */
     @Override
     protected void initDefaultCommand() {
-
+        setDefaultCommand(new Indicators());
     }
 
     /**
