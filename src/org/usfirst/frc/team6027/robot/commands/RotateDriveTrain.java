@@ -54,7 +54,7 @@ public class RotateDriveTrain extends Command{
     private class pidOutput implements PIDOutput {
         @Override
         public void pidWrite(double output) {
-            Robot.drivetrain.arcadeDrive(0,output*-0.45);
+            Robot.drivetrain.arcadeDrive(0,output*-0.40);
         }
     }
 }

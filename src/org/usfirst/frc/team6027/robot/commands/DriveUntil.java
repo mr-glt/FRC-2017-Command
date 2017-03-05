@@ -10,6 +10,8 @@ public class DriveUntil extends Command {
 
     public DriveUntil(double setpoint){
         requires(Robot.drivetrain);
+        requires(Robot.gyro);
+        requires(Robot.ultrasonic);
         pid = new PIDController(0.27, 0, 0, Robot.ultrasonic.getUltrasonic(), new pidOutput());
         pid.setAbsoluteTolerance(2);
         pid.setSetpoint(setpoint);
@@ -26,7 +28,7 @@ public class DriveUntil extends Command {
 
     @Override
     protected boolean isFinished() {
-        return pid.onTarget();
+        return pid.onTarget() || Robot.ultrasonic.getDistance()<4;
     }
 
     @Override
@@ -39,14 +41,12 @@ public class DriveUntil extends Command {
     protected void interrupted() {
         pid.disable();
     }
+
     private class pidOutput implements PIDOutput {
         @Override
         public void pidWrite(double output) {
-            if(output<0){
-                Robot.drivetrain.tankDrive(output*0.53,output*0.53);
-            }else{
-                Robot.drivetrain.tankDrive(output*0.55,output*0.55);
-            }
+            double turningValue = (0 - Robot.gyro.getAngle()) * 0.005;
+            Robot.drivetrain.arcadeDrive(output*0.55,turningValue);
         }
     }
 }
