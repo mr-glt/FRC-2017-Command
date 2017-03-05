@@ -5,13 +5,16 @@ import org.usfirst.frc.team6027.robot.Robot;
 
 public class SpinVoltage extends Command {
     private double voltage;
-    public SpinVoltage(double voltage){
+    private boolean timed;
+    public SpinVoltage(double voltage, boolean timed){
         this.voltage = voltage;
+        this.timed = timed;
         requires(Robot.flywheel);
         requires(Robot.meter);
     }
     @Override
     protected void initialize() {
+        setTimeout(3);
     }
 
     @Override
@@ -22,7 +25,11 @@ public class SpinVoltage extends Command {
 
     @Override
     protected boolean isFinished() {
-        return false;
+        if (timed){
+            return isTimedOut();
+        }else{
+            return false;
+        }
     }
 
     @Override

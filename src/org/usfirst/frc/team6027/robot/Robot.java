@@ -13,6 +13,11 @@ import org.usfirst.frc.team6027.robot.commands.StartEndTimer;
 import org.usfirst.frc.team6027.robot.subsystems.*;
 import org.usfirst.frc.team6027.robot.commands.auto.*;
 
+/**
+ * Team 6027's 2017 Code
+ * @author Charlie Wade
+ * @version Post-Build
+ */
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain drivetrain = new DriveTrain();

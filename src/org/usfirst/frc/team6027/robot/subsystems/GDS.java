@@ -6,6 +6,8 @@ import org.usfirst.frc.team6027.robot.RobotMap;
 
 /**
  * A subsystem to control the Gear Deliver System(GDS).
+ * @author Charlie Wade
+ * @version Post-Build
  */
 public class GDS extends Subsystem{
     private DoubleSolenoid sol = new DoubleSolenoid(10,RobotMap.solGDSOne,RobotMap.solGDSTwo);

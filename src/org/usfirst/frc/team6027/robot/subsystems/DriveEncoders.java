@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * A subsystem to operate the encoders located on the drivetrain.
+ * @author Charlie Wade
+ * @version Post-Build
  */
 public class DriveEncoders extends Subsystem {
     private Encoder encoderLeft;

@@ -7,6 +7,8 @@ import org.usfirst.frc.team6027.robot.RobotMap;
 
 /**
  * A subsystem to control the metering wheel
+ * @author Charlie Wade
+ * @version Post-Build
  */
 public class Meter extends Subsystem {
     private VictorSP meterWheel = new VictorSP(RobotMap.meterWheelPort);

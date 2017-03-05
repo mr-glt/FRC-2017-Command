@@ -7,6 +7,8 @@ import org.usfirst.frc.team6027.robot.commands.Indicators;
 
 /**
  * A subsystem to control the ultrasonic sensors.
+ * @author Charlie Wade
+ * @version Post-Build
  */
 public class Ultrasonic extends Subsystem {
     private double valueToInches = RobotMap.valueToInches;

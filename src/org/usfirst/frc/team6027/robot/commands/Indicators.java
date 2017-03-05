@@ -10,6 +10,7 @@ import org.usfirst.frc.team6027.robot.Robot;
 public class Indicators extends Command{
     public Indicators() {
         requires(Robot.ultrasonic);
+        requires(Robot.driveEncoders);
     }
     @Override
     protected void initialize() {
@@ -30,6 +31,7 @@ public class Indicators extends Command{
             SmartDashboard.putBoolean("Shooter Distance", false);
         }
         SmartDashboard.putNumber("Distance Forward", Robot.ultrasonic.getDistance());
+        SmartDashboard.putNumber("Distance", Robot.driveEncoders.getLeftDistance());
     }
 
     @Override

@@ -11,6 +11,8 @@ import java.util.TimerTask;
 
 /**
  * A subsystem that runs tasks that trigger when a time is reached.
+ * @author Charlie Wade
+ * @version Post-Build
  */
 public class FieldTimer extends Subsystem{
     private Timer timer = new Timer();

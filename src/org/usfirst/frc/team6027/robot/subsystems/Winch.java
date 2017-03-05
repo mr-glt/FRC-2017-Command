@@ -6,6 +6,8 @@ import org.usfirst.frc.team6027.robot.RobotMap;
 
 /**
  * A subsystem to control the rotation drum on the winch.
+ * @author Charlie Wade
+ * @version Post-Build
  */
 public class Winch extends Subsystem{
     private CANTalon winch = new CANTalon(RobotMap.winchPort);

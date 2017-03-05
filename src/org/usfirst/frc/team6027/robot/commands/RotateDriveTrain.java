@@ -12,6 +12,7 @@ public class RotateDriveTrain extends Command{
     public RotateDriveTrain(double theta){
         requires(Robot.drivetrain);
         requires(Robot.driveEncoders);
+        requires(Robot.gyro);
         pid = new PIDController(0.28, 0, 0, Robot.gyro.getGyro(), new pidOutput());
         pid.setAbsoluteTolerance(2);
         pid.setSetpoint(theta);
@@ -19,8 +20,8 @@ public class RotateDriveTrain extends Command{
 
     @Override
     protected void initialize() {
-    	 Robot.driveEncoders.getEncoderLeft().reset();
-    	 Robot.gyro.reset();
+        Robot.driveEncoders.getEncoderLeft().reset();
+        Robot.gyro.reset();
     	pid.reset();
     	pid.enable();
     }
@@ -38,14 +39,15 @@ public class RotateDriveTrain extends Command{
     @Override
     protected void end() {
         Robot.driveEncoders.getEncoderLeft().reset();
+        Robot.drivetrain.arcadeDrive(0,0);
     	pid.disable();
         pid.reset();
-        SmartDashboard.putBoolean("OnTarget", true);
     }
 
     @Override
     protected void interrupted() {
     	Robot.driveEncoders.getEncoderLeft().reset();
+        Robot.drivetrain.arcadeDrive(0,0);
     	pid.disable();
         pid.reset();
     }

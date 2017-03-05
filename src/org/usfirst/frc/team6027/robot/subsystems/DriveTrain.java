@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.RobotDrive;
 /**
  * This class provides drive functionality to the robot. It uses the two most common forms of standard drive, arcade and tank. Motor ports
  * can be changed in the RobotMap.
+ * @author Charlie Wade
+ * @version Post-Build
  */
 public class DriveTrain extends Subsystem{
 	private CANTalon frontRight = new CANTalon(RobotMap.frontRight);

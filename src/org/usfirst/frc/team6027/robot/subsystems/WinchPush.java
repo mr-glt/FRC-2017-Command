@@ -7,6 +7,8 @@ import org.usfirst.frc.team6027.robot.RobotMap;
 
 /**
  * A subsystem to control the rope pusher.
+ * @author Charlie Wade
+ * @version Post-Build
  */
 public class WinchPush extends Subsystem{
     private DoubleSolenoid sol = new DoubleSolenoid(10,RobotMap.solWinchOne,RobotMap.solWinchTwo);
