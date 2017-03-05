@@ -39,6 +39,8 @@ public class Robot extends IterativeRobot {
 	private final String leftGearAuto = "Left Gear";
 	private final String rightGearAuto = "Right Gear";
 	private final String boilerAuto = "Boiler";
+	private final String noAuto = "No Auto";
+	private final String centerGearOnlyAuto = "Center Gear Only";
 	private SendableChooser<String> chooser = new SendableChooser<>();
 
 	private CommandGroup autonomousCommandGroup;
@@ -48,11 +50,13 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		vision.setUpCamera();
 		SmartDashboard.putData(drivetrain);
-		chooser.addDefault("Forward Drive", forwardAuto);
+		chooser.addObject("Forward Drive", forwardAuto);
 		chooser.addObject("Center Gear", centerGearAuto);
 		chooser.addObject("Left Gear", leftGearAuto);
 		chooser.addObject("Right Gear", rightGearAuto);
 		chooser.addObject("Boiler", boilerAuto);
+		chooser.addDefault("None", noAuto);
+		chooser.addObject("Center Gear Only",centerGearOnlyAuto);
 		SmartDashboard.putData("Auto choices", chooser);
 		Compressor c = new Compressor(10);
 		c.setClosedLoopControl(true);
@@ -85,7 +89,10 @@ public class Robot extends IterativeRobot {
 			case boilerAuto:
 				autonomousCommandGroup = new Boiler();
 				break;
-			case forwardAuto:
+			case centerGearOnlyAuto:
+				autonomousCommandGroup = new CenterGearOnly();
+				break;
+			case noAuto:
 			default:
 				autonomousCommandGroup = new Forward();
 				break;
