@@ -7,9 +7,14 @@ import org.usfirst.frc.team6027.robot.commands.RotateDriveTrain;
 
 public class RightGear extends CommandGroup {
     public RightGear(){
-        addSequential(new DriveDistance(100));
-        addSequential(new RotateDriveTrain(30));
+        addSequential(new DriveDistance(-93));
+        addSequential(new RotateDriveTrain(49));
+        addSequential(new DriveDistance(-34));
+        addSequential(new OpenGDS(1));
         addSequential(new DriveDistance(30));
-        addSequential(new OpenGDS(3));
+        addSequential(new RotateDriveTrain(-49));
+        addSequential(new DriveDistance(-120));
+        addSequential(new RotateDriveTrain(45));
+        addSequential(new DriveDistance(-120));
     }
 }

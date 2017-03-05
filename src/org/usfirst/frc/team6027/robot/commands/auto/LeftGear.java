@@ -7,9 +7,12 @@ import org.usfirst.frc.team6027.robot.commands.RotateDriveTrain;
 
 public class LeftGear extends CommandGroup {
     public LeftGear(){
-        addSequential(new DriveDistance(100));
-        addSequential(new RotateDriveTrain(-30));
+        addSequential(new DriveDistance(-90));
+        addSequential(new RotateDriveTrain(-49));
+        addSequential(new DriveDistance(-29));
+        addSequential(new OpenGDS(1));
         addSequential(new DriveDistance(30));
-        addSequential(new OpenGDS(3));
+        addSequential(new RotateDriveTrain(49));
+        addSequential(new DriveDistance(-240));
     }
 }

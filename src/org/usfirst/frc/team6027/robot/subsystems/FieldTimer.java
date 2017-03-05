@@ -31,9 +31,12 @@ public class FieldTimer extends Subsystem{
             @Override
             public void run() {
                 new ResetWinch();
-                Robot.oi.getController().setRumble(Joystick.RumbleType.kLeftRumble,1);
+                //Robot.oi.getController().setRumble(Joystick.RumbleType.kLeftRumble,1);
             }
-        }, 105000); //105 seconds
+        }, 105000); //105 seconds 105000
+    }
+    public void stopRumble(){
+    	Robot.oi.getController().setRumble(Joystick.RumbleType.kLeftRumble, 0);
     }
 
 }

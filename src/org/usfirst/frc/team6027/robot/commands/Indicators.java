@@ -19,7 +19,7 @@ public class Indicators extends Command{
     @Override
     protected void execute() {
         //Todo update these values
-        if(Robot.ultrasonic.getDistance()<=6){
+        if(Robot.ultrasonic.getDistance()<=12){
             SmartDashboard.putBoolean("Gear Distance", true);
             SmartDashboard.putBoolean("Shooter Distance", false);
         }else if(Robot.ultrasonic.getDistance()<= 80 && Robot.ultrasonic.getDistance() >= 60){
@@ -29,6 +29,7 @@ public class Indicators extends Command{
             SmartDashboard.putBoolean("Gear Distance", false);
             SmartDashboard.putBoolean("Shooter Distance", false);
         }
+        SmartDashboard.putNumber("Distance Forward", Robot.ultrasonic.getDistance());
     }
 
     @Override

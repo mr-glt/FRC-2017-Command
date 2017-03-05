@@ -1,35 +1,33 @@
 package org.usfirst.frc.team6027.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc.team6027.robot.Robot;
 
-public class OpenGDS extends Command{
-    public OpenGDS(double timeout) {
-        requires(Robot.gds);
-        setTimeout(timeout);
+public class DistanceDIsplay extends Command {
+    public DistanceDIsplay() {
+		requires(Robot.driveEncoders);
     }
     @Override
     protected void initialize() {
-
     }
 
     @Override
     protected void execute() {
-        Robot.gds.open();
+    	SmartDashboard.putNumber("Distance", Robot.driveEncoders.getLeftDistance());
     }
 
     @Override
     protected boolean isFinished() {
-        return isTimedOut();
+        return false;
     }
 
     @Override
     protected void end() {
-    	Robot.gds.close();
     }
 
     @Override
     protected void interrupted() {
-    	Robot.gds.close();
     }
 }

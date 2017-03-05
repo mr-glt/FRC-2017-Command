@@ -43,9 +43,9 @@ public class DriveUntil extends Command {
         @Override
         public void pidWrite(double output) {
             if(output<0){
-                Robot.drivetrain.tankDrive(output*-0.53,output*-0.5);
+                Robot.drivetrain.tankDrive(output*0.53,output*0.53);
             }else{
-                Robot.drivetrain.tankDrive(output*-0.50,output*-0.55);
+                Robot.drivetrain.tankDrive(output*0.55,output*0.55);
             }
         }
     }

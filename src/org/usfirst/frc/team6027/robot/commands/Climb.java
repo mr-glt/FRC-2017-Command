@@ -6,6 +6,7 @@ import org.usfirst.frc.team6027.robot.Robot;
 public class Climb extends Command{
     public Climb(){
         requires(Robot.winch);
+        requires(Robot.fieldTimer);
     }
     @Override
     protected void initialize() {
@@ -13,7 +14,8 @@ public class Climb extends Command{
 
     @Override
     protected void execute() {
-        Robot.winch.on();
+        Robot.fieldTimer.stopRumble();
+    	Robot.winch.on();
     }
 
     @Override

@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team6027.robot.Robot;
 
-public class DriveDistance extends Command {
+public class DriveDistanceFast extends Command {
     private PIDController pid;
 
-    public DriveDistance(double setpoint){
+    public DriveDistanceFast(double setpoint){
         requires(Robot.drivetrain);
         requires(Robot.driveEncoders);
         pid = new PIDController(0.27, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidOutput());
@@ -48,9 +48,9 @@ public class DriveDistance extends Command {
         @Override
         public void pidWrite(double output) {
             if(output<0){
-                Robot.drivetrain.tankDrive(output*0.62,output*0.60);
+                Robot.drivetrain.tankDrive(output*0.82,output*0.80);
             }else{
-                Robot.drivetrain.tankDrive(output*0.62,output*0.60);
+                Robot.drivetrain.tankDrive(output*0.82,output*0.80);
             }
         }
     }

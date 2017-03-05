@@ -7,7 +7,7 @@ import org.usfirst.frc.team6027.robot.Robot;
 import org.usfirst.frc.team6027.robot.RobotMap;
 
 public class ResetWinch extends Command{
-    DigitalInput limitSwitch = new DigitalInput(RobotMap.winchLimitPort);
+    //DigitalInput limitSwitch = new DigitalInput(RobotMap.winchLimitPort);
     public ResetWinch() {
         requires(Robot.winch);
         requires(Robot.winchPush);
@@ -25,7 +25,7 @@ public class ResetWinch extends Command{
 
     @Override
     protected boolean isFinished() {
-        return limitSwitch.get();
+        return false; //limitSwitch.get();
     }
 
     @Override
