@@ -2,7 +2,6 @@ package org.usfirst.frc.team6027.robot.commands;
 
 import org.usfirst.frc.team6027.robot.Robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class StickDrive extends Command {

@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team6027.robot.Robot;
 import org.usfirst.frc.team6027.robot.commands.ResetWinch;
-import org.usfirst.frc.team6027.robot.commands.WinchOpen;
 
 import java.util.Timer;
 import java.util.TimerTask;
