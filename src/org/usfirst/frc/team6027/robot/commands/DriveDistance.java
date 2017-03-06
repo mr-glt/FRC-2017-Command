@@ -15,8 +15,14 @@ public class DriveDistance extends Command {
         requires(Robot.driveEncoders);
         requires(Robot.gyro);
         requires(Robot.ultrasonic);
-        pid = new PIDController(0.27, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidOutput());
+        pid = new PIDController(0.05, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidOutput());
+        if(setpoint>0){
+            pid.setInputRange(0,setpoint+10);
+        }else{
+            pid.setInputRange(setpoint-10,0);
+        }
         pid.setAbsoluteTolerance(0.5);
+        pid.setOutputRange(-0.6,0.6);
         pid.setSetpoint(setpoint);
     }
     @Override
@@ -53,7 +59,7 @@ public class DriveDistance extends Command {
         @Override
         public void pidWrite(double output) {
             double turningValue = (0 - Robot.gyro.getAngle()) * 0.005;
-            Robot.drivetrain.arcadeDrive(output*0.55,turningValue);
+            Robot.drivetrain.arcadeDrive(output,turningValue);
         }
     }
 }

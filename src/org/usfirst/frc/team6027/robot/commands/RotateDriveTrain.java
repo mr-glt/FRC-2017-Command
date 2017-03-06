@@ -13,8 +13,10 @@ public class RotateDriveTrain extends Command{
         requires(Robot.drivetrain);
         requires(Robot.driveEncoders);
         requires(Robot.gyro);
-        pid = new PIDController(0.28, 0, 0, Robot.gyro.getGyro(), new pidOutput());
-        pid.setAbsoluteTolerance(2);
+        pid = new PIDController(0.05, 0, 0, Robot.gyro.getGyro(), new pidOutput());
+        pid.setAbsoluteTolerance(1);
+        pid.setInputRange(-180,180);
+        pid.setOutputRange(-0.5,0.5);
         pid.setSetpoint(theta);
     }
 
@@ -54,7 +56,7 @@ public class RotateDriveTrain extends Command{
     private class pidOutput implements PIDOutput {
         @Override
         public void pidWrite(double output) {
-            Robot.drivetrain.arcadeDrive(0,output*-0.40);
+            Robot.drivetrain.arcadeDrive(0,-output);
         }
     }
 }
