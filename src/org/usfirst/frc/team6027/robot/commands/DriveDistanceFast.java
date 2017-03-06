@@ -53,7 +53,7 @@ public class DriveDistanceFast extends Command {
         @Override
         public void pidWrite(double output) {
             double turningValue = (0 - Robot.gyro.getAngle()) * 0.005;
-            Robot.drivetrain.arcadeDrive(output*0.60,turningValue);
+            Robot.drivetrain.arcadeDrive(output*0.90,turningValue);
         }
     }
 }

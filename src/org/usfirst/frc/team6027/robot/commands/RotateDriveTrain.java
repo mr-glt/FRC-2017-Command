@@ -13,11 +13,12 @@ public class RotateDriveTrain extends Command{
         requires(Robot.drivetrain);
         requires(Robot.driveEncoders);
         requires(Robot.gyro);
-        pid = new PIDController(0.05, 0, 0, Robot.gyro.getGyro(), new pidOutput());
+        pid = new PIDController(0.085, 0, 0, Robot.gyro.getGyro(), new pidOutput());
         pid.setAbsoluteTolerance(1);
         pid.setInputRange(-180,180);
-        pid.setOutputRange(-0.5,0.5);
+        pid.setOutputRange(-0.4,0.4);
         pid.setSetpoint(theta);
+        System.out.println("Rotating robot to: " + theta);
     }
 
     @Override
@@ -40,7 +41,8 @@ public class RotateDriveTrain extends Command{
 
     @Override
     protected void end() {
-        Robot.driveEncoders.getEncoderLeft().reset();
+    	System.out.println("Finished on target at: " + Robot.gyro.getAngle());
+    	Robot.driveEncoders.getEncoderLeft().reset();
         Robot.drivetrain.arcadeDrive(0,0);
     	pid.disable();
         pid.reset();
@@ -48,6 +50,7 @@ public class RotateDriveTrain extends Command{
 
     @Override
     protected void interrupted() {
+    	System.out.println("Interrupted at: " + Robot.gyro.getAngle());
     	Robot.driveEncoders.getEncoderLeft().reset();
         Robot.drivetrain.arcadeDrive(0,0);
     	pid.disable();

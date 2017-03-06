@@ -50,12 +50,12 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		vision.setUpCamera();
 		SmartDashboard.putData(drivetrain);
+		chooser.addDefault("None", noAuto);
 		chooser.addObject("Forward Drive", forwardAuto);
 		chooser.addObject("Center Gear", centerGearAuto);
 		chooser.addObject("Left Gear", leftGearAuto);
 		chooser.addObject("Right Gear", rightGearAuto);
 		chooser.addObject("Boiler", boilerAuto);
-		chooser.addDefault("None", noAuto);
 		chooser.addObject("Center Gear Only",centerGearOnlyAuto);
 		SmartDashboard.putData("Auto choices", chooser);
 		Compressor c = new Compressor(10);
@@ -75,7 +75,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		String autoSelected = chooser.getSelected();
-		System.out.println("Auto selected: " + autoSelected);
+		System.out.println("Starting new auto run: " + autoSelected);
 		switch (autoSelected) {
 			case centerGearAuto:
 				autonomousCommandGroup = new CenterGear();
@@ -94,7 +94,7 @@ public class Robot extends IterativeRobot {
 				break;
 			case noAuto:
 			default:
-				autonomousCommandGroup = new Forward();
+				autonomousCommandGroup = new NoAuto();
 				break;
 		}
  		autonomousCommandGroup.start();

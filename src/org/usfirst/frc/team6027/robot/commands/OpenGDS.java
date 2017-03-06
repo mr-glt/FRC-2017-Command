@@ -7,6 +7,7 @@ public class OpenGDS extends Command{
     public OpenGDS(double timeout) {
         requires(Robot.gds);
         setTimeout(timeout);
+        System.out.println("GDS is opening for " + timeout + " seconds");
     }
     @Override
     protected void initialize() {
@@ -26,10 +27,12 @@ public class OpenGDS extends Command{
     @Override
     protected void end() {
     	Robot.gds.close();
+    	System.out.println("Finished GDS cycle");
     }
 
     @Override
     protected void interrupted() {
     	Robot.gds.close();
+    	System.out.println("Interrupted GDS cycle");
     }
 }

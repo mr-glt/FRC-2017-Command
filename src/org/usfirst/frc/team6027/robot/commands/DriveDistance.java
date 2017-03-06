@@ -15,7 +15,7 @@ public class DriveDistance extends Command {
         requires(Robot.driveEncoders);
         requires(Robot.gyro);
         requires(Robot.ultrasonic);
-        pid = new PIDController(0.05, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidOutput());
+        pid = new PIDController(0.1, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidOutput());
         if(setpoint>0){
             pid.setInputRange(0,setpoint+10);
         }else{
@@ -24,6 +24,7 @@ public class DriveDistance extends Command {
         pid.setAbsoluteTolerance(0.5);
         pid.setOutputRange(-0.6,0.6);
         pid.setSetpoint(setpoint);
+        System.out.println("Driving Forward for:  " + setpoint);
     }
     @Override
     protected void initialize() {
@@ -39,26 +40,28 @@ public class DriveDistance extends Command {
 
     @Override
     protected boolean isFinished() {
-        return pid.onTarget() || (Robot.ultrasonic.getDistance()<4);
+        return pid.onTarget();
     }
 
     @Override
     protected void end() {
-        pid.disable();
+    	System.out.println("Finished on target at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
+    	pid.disable();
         pid.reset();
         Robot.drivetrain.arcadeDrive(0,0);
     }
 
     @Override
     protected void interrupted() {
-        pid.disable();
+    	System.out.println("Interrupted at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
+    	pid.disable();
         pid.reset();
         Robot.drivetrain.arcadeDrive(0,0);
     }
     private class pidOutput implements PIDOutput {
         @Override
         public void pidWrite(double output) {
-            double turningValue = (0 - Robot.gyro.getAngle()) * 0.005;
+            double turningValue = (0 - Robot.gyro.getAngle()) * 0.0085;
             Robot.drivetrain.arcadeDrive(output,turningValue);
         }
     }
