@@ -19,11 +19,11 @@ public class ArcDriveDistance extends Command {
         requires(Robot.gyro);
         requires(Robot.ultrasonic);
         if (isRighthand){
-            setpoint1 = 2*Math.PI*radius;
-            setpoint2 = 2*Math.PI*(radius-34);
+            setpoint1 = 2*Math.PI*radius*(1/4);
+            setpoint2 = 2*Math.PI*(radius-34)*(1/4);
         }else{
-            setpoint1 = 2*Math.PI*(radius-34);
-            setpoint2 = 2*Math.PI*radius;
+            setpoint1 = 2*Math.PI*(radius-34)*(1/4);
+            setpoint2 = 2*Math.PI*radius*(1/4);
         }
         pidX= new PIDController(0.05, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidXOutput());
         if(setpoint1>0){

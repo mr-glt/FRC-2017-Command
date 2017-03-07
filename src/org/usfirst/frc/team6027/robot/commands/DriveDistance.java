@@ -61,7 +61,7 @@ public class DriveDistance extends Command {
     private class pidOutput implements PIDOutput {
         @Override
         public void pidWrite(double output) {
-            double turningValue = (0 - Robot.gyro.getAngle()) * 0.0085;
+            double turningValue = (0 - Robot.gyro.getAngle()) * 0.005;
             Robot.drivetrain.arcadeDrive(output,turningValue);
         }
     }

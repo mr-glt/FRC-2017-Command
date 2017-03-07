@@ -31,7 +31,7 @@ public class RobotMap {
     public static int winchLimitPort = 8;
 
     //Constants
-    public static double valueToInches = 0.05;
+    public static double valueToInches = 0.125;
     public static final int IMG_WIDTH = 320;
     public static final int IMG_HEIGHT = 240;
     public static final int exposure = 5;
