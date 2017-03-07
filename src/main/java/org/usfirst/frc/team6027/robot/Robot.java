@@ -9,9 +9,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.commands.StartEndTimer;
 import org.usfirst.frc.team6027.robot.subsystems.*;
 import org.usfirst.frc.team6027.robot.commands.auto.*;
+import org.slf4j.Logger;
 
 /**
  * Team 6027's 2017 Code
@@ -20,20 +22,19 @@ import org.usfirst.frc.team6027.robot.commands.auto.*;
  */
 public class Robot extends IterativeRobot {
 
-	public static DriveTrain drivetrain = new DriveTrain();
-	public static DriveEncoders driveEncoders = new DriveEncoders(RobotMap.leftEncoderA,RobotMap.leftEncoderB,RobotMap.rightEncoderA, RobotMap.rightEncoderB,
-			RobotMap.encoderMaxPeriod, RobotMap.encoderMinRate, RobotMap.encoderDPP,RobotMap.encoderReverseDirection,RobotMap.encoderSamplesToAvg);
-	public static Ultrasonic ultrasonic = new Ultrasonic(RobotMap.valueToInches,RobotMap.ultrasonicPort);
-	public static Gyro gyro = new Gyro();
-	public static Vision vision = new Vision();
-	public static GDS gds = new GDS();
-	public static Pickup pickup = new Pickup();
-	public static Flywheel flywheel = new Flywheel();
-	public static Meter meter = new Meter();
-	public static Winch winch = new Winch();
-	public static WinchPush winchPush = new WinchPush();
-	public static FieldTimer fieldTimer = new FieldTimer();
-	public static OI oi = new OI();
+	public static DriveTrain drivetrain;
+	public static DriveEncoders driveEncoders;
+	public static Ultrasonic ultrasonic;
+	public static Gyro gyro;
+	public static Vision vision;
+	public static GDS gds;
+	public static Pickup pickup;
+	public static Flywheel flywheel;
+	public static Meter meter;
+	public static Winch winch;
+	public static WinchPush winchPush;
+	public static FieldTimer fieldTimer;
+	public static OI oi;
 	private final String forwardAuto = "Forward Drive";
 	private final String centerGearAuto = "Center Gear";
 	private final String leftGearAuto = "Left Gear";
@@ -41,13 +42,33 @@ public class Robot extends IterativeRobot {
 	private final String boilerAuto = "Boiler";
 	private final String noAuto = "No Auto";
 	private final String centerGearOnlyAuto = "Center Gear Only";
-	private SendableChooser<String> chooser = new SendableChooser<>();
+	private SendableChooser<String> chooser;
 
 	private CommandGroup autonomousCommandGroup;
-	private Command endTimer = new StartEndTimer();
-
+	private Command endTimer;
+	Logger logger;
 	@Override
 	public void robotInit() {
+		logger = LoggerFactory.getLogger(Robot.class);
+		logger.info("Test Logging");
+		drivetrain = new DriveTrain();
+		driveEncoders = new DriveEncoders(RobotMap.leftEncoderA,RobotMap.leftEncoderB,RobotMap.rightEncoderA, RobotMap.rightEncoderB,
+				RobotMap.encoderMaxPeriod, RobotMap.encoderMinRate, RobotMap.encoderDPP,RobotMap.encoderReverseDirection,RobotMap.encoderSamplesToAvg);
+		ultrasonic = new Ultrasonic(RobotMap.valueToInches,RobotMap.ultrasonicPort);
+		gyro = new Gyro();
+		vision = new Vision();
+		gds = new GDS();
+		pickup = new Pickup();
+		flywheel = new Flywheel();
+		meter = new Meter();
+		winch = new Winch();
+		winchPush = new WinchPush();
+		fieldTimer = new FieldTimer();
+		oi = new OI();
+
+		chooser = new SendableChooser<>();
+		endTimer = new StartEndTimer();
+
 		vision.setUpCamera();
 		SmartDashboard.putData(drivetrain);
 		chooser.addDefault("None", noAuto);
@@ -98,7 +119,7 @@ public class Robot extends IterativeRobot {
 				break;
 		}
  		autonomousCommandGroup.start();
-
+		logger.warn("Auto Started");
 	}
 	@Override
 	public void autonomousPeriodic() {

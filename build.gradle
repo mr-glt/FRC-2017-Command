@@ -1,0 +1,34 @@
+plugins {
+    id "java"
+    id "eclipse"
+    id "idea"
+    id "jaci.openrio.gradle.GradleRIO" version "2017.1.5"
+}
+
+frc {
+    team = "6027"
+    robotClass = "org.usfirst.frc.team6027.robot.Robot"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile wpilib()
+    compile talonSrx()
+    compile navx()
+	compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
+}
+
+def robotManifest = {
+  attributes 'Main-Class': 'edu.wpi.first.wpilibj.RobotBase'
+  attributes 'Robot-Class': frc.robotClass
+}
+
+jar {
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    manifest robotManifest
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.2.1'
+}
