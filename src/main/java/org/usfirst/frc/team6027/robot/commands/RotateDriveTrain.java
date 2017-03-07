@@ -4,25 +4,30 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.Robot;
 
 public class RotateDriveTrain extends Command{
+    private double theta=0;
     private PIDController pid;
+    private Logger logger = LoggerFactory.getLogger(RotateDriveTrain.class);
 
     public RotateDriveTrain(double theta){
         requires(Robot.drivetrain);
         requires(Robot.driveEncoders);
         requires(Robot.gyro);
+        this.theta=theta;
         pid = new PIDController(0.085, 0, 0, Robot.gyro.getGyro(), new pidOutput());
         pid.setAbsoluteTolerance(1);
         pid.setInputRange(-180,180);
         pid.setOutputRange(-0.4,0.4);
         pid.setSetpoint(theta);
-        System.out.println("Rotating robot to: " + theta);
     }
 
     @Override
     protected void initialize() {
+        logger.debug("Rotating robot to: " + theta);
         Robot.driveEncoders.getEncoderLeft().reset();
         Robot.gyro.reset();
     	pid.reset();
@@ -41,7 +46,10 @@ public class RotateDriveTrain extends Command{
 
     @Override
     protected void end() {
-    	System.out.println("Finished on target at: " + Robot.gyro.getAngle());
+    	logger.debug("Finished on target at: " + Robot.gyro.getAngle());
+        if((Math.abs(theta) - Math.abs(Robot.gyro.getAngle())) > 2){
+            logger.warn("Large error of: " + (Math.abs(theta) - Math.abs(Robot.gyro.getAngle())));
+        }
     	Robot.driveEncoders.getEncoderLeft().reset();
         Robot.drivetrain.arcadeDrive(0,0);
     	pid.disable();
@@ -50,7 +58,7 @@ public class RotateDriveTrain extends Command{
 
     @Override
     protected void interrupted() {
-    	System.out.println("Interrupted at: " + Robot.gyro.getAngle());
+    	logger.warn("Interrupted at: " + Robot.gyro.getAngle());
     	Robot.driveEncoders.getEncoderLeft().reset();
         Robot.drivetrain.arcadeDrive(0,0);
     	pid.disable();

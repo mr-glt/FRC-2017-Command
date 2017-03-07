@@ -1,21 +1,25 @@
 package org.usfirst.frc.team6027.robot.commands.shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.Robot;
 
 public class SpinVoltage extends Command {
     private double voltage;
     private boolean timed;
+    private Logger logger = LoggerFactory.getLogger(SpinVoltage.class);
     public SpinVoltage(double voltage, boolean timed){
         this.voltage = voltage;
         this.timed = timed;
         requires(Robot.flywheel);
         requires(Robot.meter);
-        System.out.println("Spining shooter to " + voltage + "% Timed: " + timed);
+        System.out.println("Spinning shooter to " + voltage + "% Timed: " + timed);
     }
     @Override
     protected void initialize() {
         setTimeout(3);
+        logger.debug("Spinning shooter to " + voltage + "% Timed: "+ timed);
     }
 
     @Override
@@ -37,13 +41,13 @@ public class SpinVoltage extends Command {
     protected void end() {
         Robot.flywheel.stopFlywheel();
         Robot.meter.spinMeterDown();
-        System.out.println("Spinning shooter down");
+        logger.debug("Spinning shooter down");
     }
 
     @Override
     protected void interrupted() {
         Robot.flywheel.stopFlywheel();
         Robot.meter.spinMeterDown();
-        System.out.println("Shooter interrupted");
+        logger.debug("Shooter interrupted");
     }
 }

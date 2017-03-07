@@ -28,7 +28,6 @@ public class GDS extends Subsystem{
      */
     public void open(){
         sol.set(DoubleSolenoid.Value.kForward);
-        System.out.println("GDS opened");
     }
 
     /**
@@ -36,7 +35,6 @@ public class GDS extends Subsystem{
      */
     public void close(){
         sol.set(DoubleSolenoid.Value.kReverse);
-        System.out.println("GDS closed");
     }
 
     /**

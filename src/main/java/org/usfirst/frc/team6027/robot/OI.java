@@ -23,7 +23,7 @@ public class OI {
 		y.whileHeld(new OpenGDS(5));
 		x.whileHeld(new Climb());
 		rb.whileHeld(new SpinVoltage(0.69, false));
-		start.toggleWhenPressed(new WinchClose());
+		start.toggleWhenPressed(new WinchToggle());
 		lb.whileHeld(new InvertedStickDrive());
 		back.whenPressed(new ResetWinch());
 	}

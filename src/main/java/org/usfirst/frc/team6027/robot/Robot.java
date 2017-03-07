@@ -46,11 +46,11 @@ public class Robot extends IterativeRobot {
 
 	private CommandGroup autonomousCommandGroup;
 	private Command endTimer;
-	Logger logger;
+	private Logger logger;
 	@Override
 	public void robotInit() {
 		logger = LoggerFactory.getLogger(Robot.class);
-		logger.info("Test Logging");
+		logger.info("Initializing Robot");
 		drivetrain = new DriveTrain();
 		driveEncoders = new DriveEncoders(RobotMap.leftEncoderA,RobotMap.leftEncoderB,RobotMap.rightEncoderA, RobotMap.rightEncoderB,
 				RobotMap.encoderMaxPeriod, RobotMap.encoderMinRate, RobotMap.encoderDPP,RobotMap.encoderReverseDirection,RobotMap.encoderSamplesToAvg);
@@ -85,7 +85,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledInit() {
-
+		logger.info("Robot disabled");
 	}
 
 	@Override
@@ -96,7 +96,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		String autoSelected = chooser.getSelected();
-		System.out.println("Starting new auto run: " + autoSelected);
+		logger.info("Stating new auto run:" + autoSelected);
 		switch (autoSelected) {
 			case centerGearAuto:
 				autonomousCommandGroup = new CenterGear();
@@ -119,7 +119,6 @@ public class Robot extends IterativeRobot {
 				break;
 		}
  		autonomousCommandGroup.start();
-		logger.warn("Auto Started");
 	}
 	@Override
 	public void autonomousPeriodic() {
@@ -128,10 +127,11 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+		logger.info("Autonomous ended");
+		logger.info("Teleop started");
 		if(autonomousCommandGroup!=null) autonomousCommandGroup.cancel();
 		endTimer.start();
 	}
-
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();

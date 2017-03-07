@@ -5,16 +5,21 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.Robot;
 
 public class DriveDistance extends Command {
+    private Logger logger = LoggerFactory.getLogger(DriveDistance.class);
     private PIDController pid;
+    private double setpoint=0;
 
     public DriveDistance(double setpoint){
         requires(Robot.drivetrain);
         requires(Robot.driveEncoders);
         requires(Robot.gyro);
         requires(Robot.ultrasonic);
+        this.setpoint=setpoint;
         pid = new PIDController(0.1, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidOutput());
         if(setpoint>0){
             pid.setInputRange(0,setpoint+10);
@@ -28,7 +33,8 @@ public class DriveDistance extends Command {
     }
     @Override
     protected void initialize() {
-    	Robot.driveEncoders.getEncoderLeft().reset();
+    	logger.debug("Driving Forward for: " + setpoint);
+        Robot.driveEncoders.getEncoderLeft().reset();
     	Robot.gyro.reset();
     	pid.enable();
     }
@@ -45,7 +51,10 @@ public class DriveDistance extends Command {
 
     @Override
     protected void end() {
-    	System.out.println("Finished on target at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
+    	logger.debug("Finished on target at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
+    	if((Math.abs(setpoint) - Math.abs(Robot.driveEncoders.getEncoderLeft().getDistance())) > 2){
+            logger.warn("Large error of: " + (Math.abs(setpoint) - Math.abs(Robot.driveEncoders.getEncoderLeft().getDistance())));
+        }
     	pid.disable();
         pid.reset();
         Robot.drivetrain.arcadeDrive(0,0);
@@ -53,7 +62,7 @@ public class DriveDistance extends Command {
 
     @Override
     protected void interrupted() {
-    	System.out.println("Interrupted at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
+    	logger.warn("Interrupted at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
     	pid.disable();
         pid.reset();
         Robot.drivetrain.arcadeDrive(0,0);
