@@ -5,8 +5,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.Robot;
 
+/**
+ * A command to run the winch drum and stop the reminder.
+ */
 public class Climb extends Command{
     private Logger logger = LoggerFactory.getLogger(Climb.class);
+
+    /**
+     * Requires winch, FieldTimer
+     */
     public Climb(){
         requires(Robot.winch);
         requires(Robot.fieldTimer);

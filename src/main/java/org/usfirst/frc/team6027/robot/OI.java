@@ -19,13 +19,14 @@ public class OI {
 		JoystickButton back = new JoystickButton(controller,7);
 
 		a.toggleWhenPressed(new PickupOn());
-		b.whileHeld(new PickupReverse());
+		//b.whileHeld(new PickupReverse());
+		b.whenPressed(new ResetWinch());
 		y.whileHeld(new OpenGDS(5));
 		x.whileHeld(new Climb());
 		rb.whileHeld(new SpinVoltage(0.69, false));
 		start.toggleWhenPressed(new WinchToggle());
 		lb.whileHeld(new InvertedStickDrive());
-		back.whenPressed(new ResetWinch());
+		//back.whenPressed(new ResetWinch());
 	}
 	public Joystick getController(){
 		return controller;

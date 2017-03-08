@@ -9,11 +9,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.Robot;
 
+/**
+ * A command to drive a specified distance quickly.
+ */
 public class DriveDistanceFast extends Command {
     private double setpoint=0;
     private PIDController pid;
     private Logger logger = LoggerFactory.getLogger(DriveDistanceFast.class);
 
+    /**
+     * Requires DriveTrain, DriveEncoders, Gyro, Ultrasonic
+     * @param setpoint distance to drive in inches
+     */
     public DriveDistanceFast(double setpoint){
         requires(Robot.drivetrain);
         requires(Robot.driveEncoders);

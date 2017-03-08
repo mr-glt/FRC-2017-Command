@@ -5,9 +5,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6027.robot.Robot;
 
 /**
- * Created by Charlie on 3/2/2017.
+ * A command to run indicators for ultrasonic and encoders when they are not being used.
  */
 public class Indicators extends Command{
+    /**
+     * Requires ultrasonic, drive encoders
+     */
     public Indicators() {
         requires(Robot.ultrasonic);
         requires(Robot.driveEncoders);
@@ -17,6 +20,9 @@ public class Indicators extends Command{
 
     }
 
+    /**
+     * Displays bools for in range for gears and shooting.
+     */
     @Override
     protected void execute() {
         //Todo update these values

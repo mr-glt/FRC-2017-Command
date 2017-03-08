@@ -9,11 +9,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.Robot;
 
+/**
+ * A command to drive to a specified distance in inches using the drive encoders.
+ */
 public class DriveDistance extends Command {
     private Logger logger = LoggerFactory.getLogger(DriveDistance.class);
     private PIDController pid;
     private double setpoint=0;
 
+    /**
+     * Requires DriveTrain, DriveEncoders, Gyro, Ultrasonic
+     * @param setpoint distance to move in inches
+     */
     public DriveDistance(double setpoint){
         requires(Robot.drivetrain);
         requires(Robot.driveEncoders);
@@ -44,11 +51,18 @@ public class DriveDistance extends Command {
         SmartDashboard.putNumber("Distance", Robot.driveEncoders.getEncoderLeft().getDistance());
     }
 
+    /**
+     *
+     * @return when pid is on target or we are about to hit something
+     */
     @Override
     protected boolean isFinished() {
-        return pid.onTarget();
+        return pid.onTarget() || Robot.ultrasonic.getDistance()<7;
     }
 
+    /**
+     * Stop robot
+     */
     @Override
     protected void end() {
     	logger.debug("Finished on target at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
@@ -60,6 +74,9 @@ public class DriveDistance extends Command {
         Robot.drivetrain.arcadeDrive(0,0);
     }
 
+    /**
+     * Stop robot
+     */
     @Override
     protected void interrupted() {
     	logger.warn("Interrupted at: " + Robot.driveEncoders.getEncoderLeft().getDistance());

@@ -5,8 +5,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.Robot;
 
+/**
+ * Command to toggle the winch cylinder. On activation, this command sets the cylinder to out. On interrupt it sets it to in.
+ */
 public class WinchToggle extends Command {
     private Logger logger = LoggerFactory.getLogger(WinchToggle.class);
+
+    /**
+     * Requires WinchPush
+     */
     public WinchToggle(){
         requires(Robot.winchPush);
     }

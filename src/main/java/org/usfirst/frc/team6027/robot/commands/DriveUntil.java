@@ -5,9 +5,16 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6027.robot.Robot;
 
+/**
+ * A command to drive until the robot is a certain distance from an object.
+ */
 public class DriveUntil extends Command {
     private PIDController pid;
 
+    /**
+     * Requires gyro, ultrasonic, drive train
+     * @param setpoint distance away in inches
+     */
     public DriveUntil(double setpoint){
         requires(Robot.drivetrain);
         requires(Robot.gyro);
@@ -26,6 +33,10 @@ public class DriveUntil extends Command {
 
     }
 
+    /**
+     *
+     * @return when PID is
+     */
     @Override
     protected boolean isFinished() {
         return pid.onTarget() || Robot.ultrasonic.getDistance()<4;

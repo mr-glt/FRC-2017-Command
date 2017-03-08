@@ -4,8 +4,13 @@ import org.usfirst.frc.team6027.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * A command to drive the robot to the controller backwards and slower for gear delivery.
+ */
 public class InvertedStickDrive extends Command {
-
+    /**
+     * Requires drive train
+     */
     public InvertedStickDrive() {
     	requires(Robot.drivetrain);
     }
@@ -17,6 +22,10 @@ public class InvertedStickDrive extends Command {
     	Robot.drivetrain.arcadeDrive(Robot.oi.getController().getRawAxis(1)*0.6, -Robot.oi.getController().getRawAxis(4)*0.75);
     }
 
+    /**
+     *
+     * @return must be interrupted
+     */
     protected boolean isFinished() {
         return false;
     }

@@ -6,8 +6,16 @@ import org.usfirst.frc.team6027.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * Default command to drive the robot with joysticks. It may be overridden during autonomous mode to run drive sequence. This command grabs
+ * the left and right joysticks on an XBox controller and sets them to arcade drive.
+ */
 public class StickDrive extends Command {
     private Logger logger = LoggerFactory.getLogger(StickDrive.class);
+
+    /**
+     * Requires DriveTrain
+     */
     public StickDrive() {
     	requires(Robot.drivetrain);
     }

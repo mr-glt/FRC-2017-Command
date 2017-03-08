@@ -8,11 +8,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.Robot;
 
+/**
+ * This command rotates the drive train to a given degree.
+ */
 public class RotateDriveTrain extends Command{
     private double theta=0;
     private PIDController pid;
     private Logger logger = LoggerFactory.getLogger(RotateDriveTrain.class);
 
+    /**
+     *
+     * @param theta degrees to rotate drive train.
+     */
     public RotateDriveTrain(double theta){
         requires(Robot.drivetrain);
         requires(Robot.driveEncoders);
@@ -39,11 +46,18 @@ public class RotateDriveTrain extends Command{
     	SmartDashboard.putNumber("Theta", Robot.gyro.getAngle());
     }
 
+    /**
+     *
+     * @return when the PID is on target
+     */
     @Override
     protected boolean isFinished() {
         return pid.onTarget();
     }
 
+    /**
+     * Stop driving the robot
+     */
     @Override
     protected void end() {
     	logger.debug("Finished on target at: " + Robot.gyro.getAngle());
@@ -56,6 +70,9 @@ public class RotateDriveTrain extends Command{
         pid.reset();
     }
 
+    /**
+     * Abort driving the robot
+     */
     @Override
     protected void interrupted() {
     	logger.warn("Interrupted at: " + Robot.gyro.getAngle());
@@ -64,6 +81,10 @@ public class RotateDriveTrain extends Command{
     	pid.disable();
         pid.reset();
     }
+
+    /**
+     * Drives the robot to the PID output using arcade drive.
+     */
     private class pidOutput implements PIDOutput {
         @Override
         public void pidWrite(double output) {
