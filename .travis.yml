@@ -1,0 +1,5 @@
+sudo: true
+language: java
+install: true
+script: ./gradlew build
+jdk: oraclejdk8
