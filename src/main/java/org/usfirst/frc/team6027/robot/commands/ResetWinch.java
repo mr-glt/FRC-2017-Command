@@ -14,7 +14,6 @@ import org.usfirst.frc.team6027.robot.RobotMap;
  */
 public class ResetWinch extends Command{
     private Logger logger = LoggerFactory.getLogger(ResetWinch.class);
-    private DigitalInput limitSwitch = new DigitalInput(RobotMap.winchLimitPort);
 
     /**
      * Requires Winch, WinchPush
@@ -25,6 +24,7 @@ public class ResetWinch extends Command{
     }
     @Override
     protected void initialize() {
+        Robot.winch.initializeCounter();
         logger.debug("Resetting Winch");
     }
 
@@ -44,7 +44,7 @@ public class ResetWinch extends Command{
      */
     @Override
     protected boolean isFinished() {
-        return limitSwitch.get();
+        return Robot.winch.isSwitchSet();
     }
 
     /**

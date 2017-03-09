@@ -1,6 +1,8 @@
 package org.usfirst.frc.team6027.robot.subsystems;
 
 import com.ctre.CANTalon;
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team6027.robot.RobotMap;
 
@@ -11,11 +13,13 @@ import org.usfirst.frc.team6027.robot.RobotMap;
  */
 public class Winch extends Subsystem{
     private CANTalon winch = new CANTalon(RobotMap.winchPort);
+    private DigitalInput limitSwitch = new DigitalInput(RobotMap.winchLimitPort);
+    private Counter counter = new Counter(limitSwitch);
     public Winch(){
 
     }
 
-    /** There is not defult command
+    /** There is not default command
      *
      */
     @Override
@@ -23,6 +27,20 @@ public class Winch extends Subsystem{
 
     }
 
+    /**
+     *
+     * @return is limit is hit
+     */
+    public boolean isSwitchSet() {
+        return counter.get() > 0;
+    }
+
+    /**
+     * Sets up counter for limit switch
+     */
+    public void initializeCounter() {
+        counter.reset();
+    }
     /**
      * Sets the winch to rotate.
      */
