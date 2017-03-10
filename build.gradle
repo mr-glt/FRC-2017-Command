@@ -35,3 +35,8 @@ jar {
 task wrapper(type: Wrapper) {
     gradleVersion = '3.2.1'
 }
+task finalize (type: Copy) {
+    from configurations.compile
+    into "${System.properties['user.home']}/wpilib/user/java/lib"
+}
+build.finalizedBy(finalize)
