@@ -23,7 +23,7 @@ public class OpenGDS extends Command{
     }
     @Override
     protected void initialize() {
-        logger.debug("GDS is opening for" + timeout + " seconds");
+        logger.info("GDS is opening for" + timeout + " seconds");
     }
 
     /**
@@ -49,7 +49,7 @@ public class OpenGDS extends Command{
     @Override
     protected void end() {
     	Robot.gds.close();
-        logger.debug("Finished GDS cycle");
+        logger.info("Finished GDS cycle");
     }
 
     /**
@@ -58,6 +58,6 @@ public class OpenGDS extends Command{
     @Override
     protected void interrupted() {
     	Robot.gds.close();
-        logger.debug("Finished GDS cycle");
+        logger.info("Finished GDS cycle");
     }
 }

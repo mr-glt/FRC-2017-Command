@@ -60,9 +60,9 @@ public class RotateDriveTrain extends Command{
      */
     @Override
     protected void end() {
-    	logger.debug("Finished on target at: " + Robot.gyro.getAngle());
+    	logger.info("Finished on target at: " + Robot.gyro.getAngle());
         if((Math.abs(theta) - Math.abs(Robot.gyro.getAngle())) > 2){
-            logger.warn("Large error of: " + (Math.abs(theta) - Math.abs(Robot.gyro.getAngle())));
+            logger.info("Large error of: " + (Math.abs(theta) - Math.abs(Robot.gyro.getAngle())));
         }
     	Robot.driveEncoders.getEncoderLeft().reset();
         Robot.drivetrain.arcadeDrive(0,0);
@@ -75,7 +75,7 @@ public class RotateDriveTrain extends Command{
      */
     @Override
     protected void interrupted() {
-    	logger.warn("Interrupted at: " + Robot.gyro.getAngle());
+    	logger.info("Interrupted at: " + Robot.gyro.getAngle());
     	Robot.driveEncoders.getEncoderLeft().reset();
         Robot.drivetrain.arcadeDrive(0,0);
     	pid.disable();

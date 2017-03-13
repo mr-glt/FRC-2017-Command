@@ -51,9 +51,9 @@ public class DriveDistanceFast extends Command {
 
     @Override
     protected void end() {
-        logger.debug("Finished on target at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
+        logger.info("Finished on target at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
         if((Math.abs(setpoint) - Math.abs(Robot.driveEncoders.getEncoderLeft().getDistance())) > 2){
-            logger.warn("Large error of: " + (Math.abs(setpoint) - Math.abs(Robot.driveEncoders.getEncoderLeft().getDistance())));
+            logger.info("Large error of: " + (Math.abs(setpoint) - Math.abs(Robot.driveEncoders.getEncoderLeft().getDistance())));
         }
         pid.disable();
         pid.reset();
@@ -62,7 +62,7 @@ public class DriveDistanceFast extends Command {
 
     @Override
     protected void interrupted() {
-        logger.warn("Interrupted at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
+        logger.info("Interrupted at: " + Robot.driveEncoders.getEncoderLeft().getDistance());
         pid.disable();
         pid.reset();
         Robot.drivetrain.arcadeDrive(0,0);

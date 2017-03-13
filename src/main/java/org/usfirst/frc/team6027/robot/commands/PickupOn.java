@@ -19,7 +19,7 @@ public class PickupOn extends Command{
     }
     @Override
     protected void initialize() {
-        logger.debug("Pickup On");
+        logger.info("Pickup On");
     }
 
     /**
@@ -45,7 +45,7 @@ public class PickupOn extends Command{
     @Override
     protected void end() {
         Robot.pickup.off();
-        logger.debug("Pickup off");
+        logger.info("Pickup off");
     }
 
     /**
@@ -54,6 +54,6 @@ public class PickupOn extends Command{
     @Override
     protected void interrupted() {
         Robot.pickup.off();
-        logger.debug("Logger off");
+        logger.info("Pickup off");
     }
 }

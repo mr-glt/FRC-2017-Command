@@ -14,12 +14,11 @@ public class SpinVoltage extends Command {
         this.timed = timed;
         requires(Robot.flywheel);
         requires(Robot.meter);
-        System.out.println("Spinning shooter to " + voltage + "% Timed: " + timed);
     }
     @Override
     protected void initialize() {
         setTimeout(3);
-        logger.debug("Spinning shooter to " + voltage + "% Timed: "+ timed);
+        logger.info("Spinning shooter to " + voltage + "% Timed: "+ timed);
     }
 
     @Override
@@ -41,13 +40,13 @@ public class SpinVoltage extends Command {
     protected void end() {
         Robot.flywheel.stopFlywheel();
         Robot.meter.spinMeterDown();
-        logger.debug("Spinning shooter down");
+        logger.info("Spinning shooter down");
     }
 
     @Override
     protected void interrupted() {
         Robot.flywheel.stopFlywheel();
         Robot.meter.spinMeterDown();
-        logger.debug("Shooter interrupted");
+        logger.info("Shooter interrupted");
     }
 }
