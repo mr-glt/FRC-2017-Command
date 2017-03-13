@@ -19,14 +19,14 @@ public class LeftGear extends CommandGroup {
      * 9. Drive 120 inches backwards
      */
     public LeftGear(){
-        addSequential(new DriveDistance(-93));
+        addSequential(new DriveDistance(-93,false));
         addSequential(new RotateDriveTrain(49));
-        addSequential(new DriveDistance(-34));
+        addSequential(new DriveDistance(-34,false));
         addSequential(new OpenGDS(1));
-        addSequential(new DriveDistance(30));
+        addSequential(new DriveDistance(30,false));
         addSequential(new RotateDriveTrain(-49));
-        addSequential(new DriveDistance(-120));
+        addSequential(new DriveDistance(-120,true));
         addSequential(new RotateDriveTrain(45));
-        addSequential(new DriveDistance(-120));
+        addSequential(new DriveDistance(-120,true));
     }
 }

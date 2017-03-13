@@ -17,12 +17,12 @@ public class RightGear extends CommandGroup {
      * 7. Drive 240 inches backwards
      */
     public RightGear(){
-        addSequential(new DriveDistance(-90));
+        addSequential(new DriveDistance(-90,false));
         addSequential(new RotateDriveTrain(-49));
-        addSequential(new DriveDistance(-29));
+        addSequential(new DriveDistance(-29,false));
         addSequential(new OpenGDS(1));
-        addSequential(new DriveDistance(30));
+        addSequential(new DriveDistance(30,false));
         addSequential(new RotateDriveTrain(49));
-        addSequential(new DriveDistance(-240));
+        addSequential(new DriveDistance(-240,true));
     }
 }

@@ -8,6 +8,6 @@ public class Forward extends CommandGroup {
      * Drive forwards to 300 inches
      */
     public Forward(){
-        addSequential(new DriveDistance(300));
+        addSequential(new DriveDistance(300,true));
     }
 }

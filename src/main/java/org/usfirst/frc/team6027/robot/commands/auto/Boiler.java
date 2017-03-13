@@ -12,7 +12,7 @@ public class Boiler extends CommandGroup {
      * 2. Spin up to 69% indefinitely
      */
     public Boiler(){
-        addSequential(new DriveDistance(20));
+        addSequential(new DriveDistance(20,false));
         addSequential(new SpinVoltage(0.69,false));
     }
 }
