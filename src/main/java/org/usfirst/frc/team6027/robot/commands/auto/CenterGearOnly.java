@@ -12,7 +12,7 @@ public class CenterGearOnly extends CommandGroup {
      * 3. Drive 27 inches forward
      */
     public CenterGearOnly(){
-        addSequential(new DriveDistance(-79,false));
+        addSequential(new DriveDistance(-67,false));
         addSequential(new OpenGDS(1));
         addSequential(new DriveDistance(27,false));
     }

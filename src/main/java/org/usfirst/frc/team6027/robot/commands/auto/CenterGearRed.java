@@ -7,7 +7,7 @@ import org.usfirst.frc.team6027.robot.commands.OpenGDS;
 import org.usfirst.frc.team6027.robot.commands.RotateDriveTrain;
 import org.usfirst.frc.team6027.robot.commands.shooter.SpinVoltage;
 
-public class CenterGear extends CommandGroup {
+public class CenterGearRed extends CommandGroup {
     /**
      * Auto to do center gear, shoot balls, and cross baseline
      * 1. Drive in revere 67 inches
@@ -20,15 +20,15 @@ public class CenterGear extends CommandGroup {
      * 8. Rotate drive train back 45 degrees
      * 9. Drive quickly 80 inches to cross baseline
      */
-    public CenterGear(){
+    public CenterGearRed(){
         addSequential(new DriveDistance(-67,false));
         addSequential(new OpenGDS(1));
         addSequential(new DriveDistance(27,false));
-        addSequential(new RotateDriveTrain(-90));
+        addSequential(new RotateDriveTrain(90));
         addSequential(new DriveDistance(-94,true));
-        addSequential(new RotateDriveTrain(-45));
+        addSequential(new RotateDriveTrain(45));
         addSequential(new SpinVoltage(0.69,true));
-        addSequential(new RotateDriveTrain(-45));
+        addSequential(new RotateDriveTrain(45));
         addSequential(new DriveDistanceFast(80));
     }
 }

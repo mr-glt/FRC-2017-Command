@@ -8,21 +8,21 @@ import org.usfirst.frc.team6027.robot.commands.RotateDriveTrain;
 public class RightGear extends CommandGroup {
     /**
      * Delivers a gear to the right peg, then crosses baseline.
-     * 1. Drive backwards 90 inches
-     * 2. Rotate backwards 49 degrees
-     * 3. Drive 29 inches backwards
+     * 1. Drive backwards 50 inches
+     * 2. Rotate backwards 50 degrees
+     * 3. Drive 70 inches backwards
      * 4. Open GDS for 1 second
-     * 5. Drive 30 inches forward
-     * 6. Rotate 49 inches
+     * 5. Drive 35 inches forward
+     * 6. Rotate 50 degrees
      * 7. Drive 240 inches backwards
      */
     public RightGear(){
-        addSequential(new DriveDistance(-90,false));
-        addSequential(new RotateDriveTrain(-49));
-        addSequential(new DriveDistance(-29,false));
+        addSequential(new DriveDistance(-50,false));
+        addSequential(new RotateDriveTrain(-50));
+        addSequential(new DriveDistance(-70,false));
         addSequential(new OpenGDS(1));
-        addSequential(new DriveDistance(30,false));
-        addSequential(new RotateDriveTrain(49));
+        addSequential(new DriveDistance(35,false));
+        addSequential(new RotateDriveTrain(50));
         addSequential(new DriveDistance(-240,true));
     }
 }

@@ -36,12 +36,14 @@ public class Robot extends IterativeRobot {
 	public static FieldTimer fieldTimer;
 	public static OI oi;
 	private final String forwardAuto = "Forward Drive";
-	private final String centerGearAuto = "Center Gear";
+	private final String centerGearAuto = "Center Gear Blue";
 	private final String leftGearAuto = "Left Gear";
 	private final String rightGearAuto = "Right Gear";
-	private final String boilerAuto = "Boiler";
+	private final String boilerAuto = "Boiler Red";
 	private final String noAuto = "No Auto";
 	private final String centerGearOnlyAuto = "Center Gear Only";
+	private final String boilerAutoBlue = "Boiler Blue";
+	private final String centerGearRed = "Center Gear Red";
 	private SendableChooser<String> chooser;
 
 	private CommandGroup autonomousCommandGroup;
@@ -73,11 +75,13 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData(drivetrain);
 		chooser.addDefault("None", noAuto);
 		chooser.addObject("Forward Drive", forwardAuto);
-		chooser.addObject("Center Gear", centerGearAuto);
+		chooser.addObject("Center Gear Blue", centerGearAuto);
 		chooser.addObject("Left Gear", leftGearAuto);
 		chooser.addObject("Right Gear", rightGearAuto);
-		chooser.addObject("Boiler", boilerAuto);
+		chooser.addObject("Boiler Red", boilerAuto);
 		chooser.addObject("Center Gear Only",centerGearOnlyAuto);
+		chooser.addObject("Boiler Blue", boilerAutoBlue);
+		chooser.addObject("Center Gear Red", centerGearRed);
 		SmartDashboard.putData("Auto choices", chooser);
 		Compressor c = new Compressor(10);
 		c.setClosedLoopControl(true);
@@ -113,6 +117,11 @@ public class Robot extends IterativeRobot {
 			case centerGearOnlyAuto:
 				autonomousCommandGroup = new CenterGearOnly();
 				break;
+			case boilerAutoBlue:
+				autonomousCommandGroup = new BoilerBlue();
+				break;
+			case centerGearRed:
+				autonomousCommandGroup = new CenterGearRed();
 			case noAuto:
 			default:
 				autonomousCommandGroup = new NoAuto();
