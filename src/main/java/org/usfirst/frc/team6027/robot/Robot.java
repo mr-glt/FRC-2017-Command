@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.commands.StartEndTimer;
+import org.usfirst.frc.team6027.robot.commands.StopEndTimer;
 import org.usfirst.frc.team6027.robot.subsystems.*;
 import org.usfirst.frc.team6027.robot.commands.auto.*;
 import org.slf4j.Logger;
@@ -48,6 +49,7 @@ public class Robot extends IterativeRobot {
 
 	private CommandGroup autonomousCommandGroup;
 	private Command endTimer;
+	private Command stopTimers;
 	private Logger logger;
 	@Override
 	public void robotInit() {
@@ -70,6 +72,7 @@ public class Robot extends IterativeRobot {
 
 		chooser = new SendableChooser<>();
 		endTimer = new StartEndTimer();
+		stopTimers = new StopEndTimer();
 
 		vision.setUpCamera();
 		SmartDashboard.putData(drivetrain);
@@ -90,6 +93,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledInit() {
 		logger.info("Robot disabled");
+		stopTimers.start();
 	}
 
 	@Override

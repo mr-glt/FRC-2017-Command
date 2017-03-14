@@ -36,6 +36,13 @@ public class FieldTimer extends Subsystem{
             }
         }, 105000); //105 seconds 105000
     }
+
+    /**
+     * Stops all timers that are running
+     */
+    public void stopTimers(){
+        timer.cancel();
+    }
     public void stopRumble(){
     	Robot.oi.getController().setRumble(Joystick.RumbleType.kLeftRumble, 0);
     }
