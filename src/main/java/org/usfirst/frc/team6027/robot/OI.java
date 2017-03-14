@@ -23,9 +23,9 @@ public class OI {
 		y.whileHeld(new OpenGDS(5));
 		x.whileHeld(new Climb());
 		rb.whileHeld(new SpinVoltage(0.69, false));
-		start.toggleWhenPressed(new WinchToggle());
+		start.toggleWhenPressed(new ResetWinch());
 		lb.whileHeld(new InvertedStickDrive());
-		back.whenPressed(new ResetWinch());
+		//back.whenPressed(new ResetWinch());
 	}
 	public Joystick getController(){
 		return controller;

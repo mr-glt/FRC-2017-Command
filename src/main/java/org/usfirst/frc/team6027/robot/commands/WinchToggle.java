@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6027.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.Robot;
@@ -25,6 +26,7 @@ public class WinchToggle extends Command {
     @Override
     protected void execute() {
         Robot.winchPush.setLock(true);
+        SmartDashboard.putBoolean("Winch Set", false);
     }
 
     @Override

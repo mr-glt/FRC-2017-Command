@@ -35,7 +35,6 @@ public class ResetWinch extends Command{
     protected void execute() {
         Robot.winch.on();
         Robot.winchPush.setLock(false);
-        SmartDashboard.putString("Reset", "true");
     }
 
     /**
@@ -54,7 +53,7 @@ public class ResetWinch extends Command{
     protected void end() {
         Robot.winch.off();
         logger.debug("Winch reset");
-        SmartDashboard.putString("Reset", "false");
+        SmartDashboard.putBoolean("Winch Set", true);
 
     }
 
@@ -63,7 +62,7 @@ public class ResetWinch extends Command{
      */
     @Override
     protected void interrupted() {
-        SmartDashboard.putString("Reset", "false");
+        SmartDashboard.putBoolean("Winch Set", true);
         Robot.winch.off();
         logger.debug("Winch reset interrupted");
     }

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6027.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.usfirst.frc.team6027.robot.Robot;
@@ -17,16 +18,19 @@ public class Climb extends Command{
     public Climb(){
         requires(Robot.winch);
         requires(Robot.fieldTimer);
+        requires(Robot.winchPush);
     }
     @Override
     protected void initialize() {
         logger.debug("WinchToggle on");
+        SmartDashboard.putBoolean("Winch Set", false);
     }
 
     @Override
     protected void execute() {
         Robot.fieldTimer.stopRumble();
     	Robot.winch.on();
+    	Robot.winchPush.setLock(true);
     }
 
     @Override
