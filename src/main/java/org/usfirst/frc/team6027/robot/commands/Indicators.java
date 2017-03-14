@@ -3,6 +3,7 @@ package org.usfirst.frc.team6027.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6027.robot.Robot;
+import org.usfirst.frc.team6027.robot.RobotMap;
 
 /**
  * A command to run indicators for ultrasonic and encoders when they are not being used.
@@ -25,11 +26,10 @@ public class Indicators extends Command{
      */
     @Override
     protected void execute() {
-        //Todo update these values
-        if(Robot.ultrasonic.getDistance()<=12){
+        if(Robot.ultrasonic.getDistance()<= RobotMap.gearMax){
             SmartDashboard.putBoolean("Gear Distance", true);
             SmartDashboard.putBoolean("Shooter Distance", false);
-        }else if(Robot.ultrasonic.getDistance()<= 80 && Robot.ultrasonic.getDistance() >= 60){
+        }else if(Robot.ultrasonic.getDistance()<= RobotMap.shootMax && Robot.ultrasonic.getDistance() >= RobotMap.shootMin){
             SmartDashboard.putBoolean("Shooter Distance", true);
             SmartDashboard.putBoolean("Gear Distance", false);
         }else{

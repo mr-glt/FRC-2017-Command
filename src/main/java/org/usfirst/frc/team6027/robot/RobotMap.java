@@ -38,6 +38,11 @@ public class RobotMap {
     public static final int regularExposure = 40;
     public static final double FOV = 66;
 
+    //Shooter
+    public static final double shootMax = 80.0;
+    public static final double shootMin = 60.0;
+    public static final double gearMax = 12;
+
     //OI Ports
     public static final int controllerPort = 0;
 }
