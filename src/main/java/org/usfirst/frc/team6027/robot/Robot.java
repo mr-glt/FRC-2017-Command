@@ -126,6 +126,7 @@ public class Robot extends IterativeRobot {
 				break;
 			case centerGearRed:
 				autonomousCommandGroup = new CenterGearRed();
+				break;
 			case noAuto:
 			default:
 				autonomousCommandGroup = new NoAuto();
