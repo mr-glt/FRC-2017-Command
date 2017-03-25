@@ -15,6 +15,7 @@ public class Indicators extends Command{
     public Indicators() {
         requires(Robot.ultrasonic);
         requires(Robot.driveEncoders);
+        requires(Robot.gyro);
     }
     @Override
     protected void initialize() {
@@ -38,6 +39,7 @@ public class Indicators extends Command{
         }
         SmartDashboard.putNumber("Distance Forward", Robot.ultrasonic.getDistance());
         SmartDashboard.putNumber("Distance", Robot.driveEncoders.getLeftDistance());
+        SmartDashboard.putNumber("Gyro", Robot.gyro.getAngle()-10);
     }
 
     @Override

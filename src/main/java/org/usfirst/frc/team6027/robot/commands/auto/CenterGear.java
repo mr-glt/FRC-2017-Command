@@ -21,14 +21,14 @@ public class CenterGear extends CommandGroup {
      * 9. Drive quickly 80 inches to cross baseline
      */
     public CenterGear(){
-        addSequential(new DriveDistance(-67,false));
+        addSequential(new DriveDistance(-67,false,0));
         addSequential(new OpenGDS(1));
-        addSequential(new DriveDistance(27,false));
+        addSequential(new DriveDistance(27,false,0));
         addSequential(new RotateDriveTrain(-90));
-        addSequential(new DriveDistance(-94,true));
-        addSequential(new RotateDriveTrain(-45));
+        addSequential(new DriveDistance(-94,true,-90));
+        addSequential(new RotateDriveTrain(-135));
         addSequential(new SpinVoltage(0.69,true));
-        addSequential(new RotateDriveTrain(-45));
+        addSequential(new RotateDriveTrain(-180));
         addSequential(new DriveDistanceFast(80));
     }
 }

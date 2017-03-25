@@ -12,7 +12,7 @@ import org.usfirst.frc.team6027.robot.Robot;
  * This command rotates the drive train to a given degree.
  */
 public class RotateDriveTrain extends Command{
-    private double theta=0;
+    public double theta=0;
     private PIDController pid;
     private Logger logger = LoggerFactory.getLogger(RotateDriveTrain.class);
 
@@ -25,10 +25,10 @@ public class RotateDriveTrain extends Command{
         requires(Robot.driveEncoders);
         requires(Robot.gyro);
         this.theta=theta;
-        pid = new PIDController(0.085, 0, 0, Robot.gyro.getGyro(), new pidOutput());
-        pid.setAbsoluteTolerance(1);
-        pid.setInputRange(-180,180);
-        pid.setOutputRange(-0.4,0.4);
+        pid = new PIDController(0.2, 0.002, 0.4, Robot.gyro.getGyro(), new pidOutput());
+        pid.setAbsoluteTolerance(0.25);
+        pid.setInputRange(-360,360);
+        pid.setOutputRange(-0.55,0.55);
         pid.setSetpoint(theta);
     }
 
@@ -36,7 +36,6 @@ public class RotateDriveTrain extends Command{
     protected void initialize() {
         logger.debug("Rotating robot to: " + theta);
         Robot.driveEncoders.getEncoderLeft().reset();
-        Robot.gyro.reset();
     	pid.reset();
     	pid.enable();
     }

@@ -88,6 +88,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto choices", chooser);
 		Compressor c = new Compressor(10);
 		c.setClosedLoopControl(true);
+		gyro.calibrate();
 	}
 
 	@Override
