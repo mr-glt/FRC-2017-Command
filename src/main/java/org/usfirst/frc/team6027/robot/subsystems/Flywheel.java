@@ -1,7 +1,6 @@
 package org.usfirst.frc.team6027.robot.subsystems;
 
 import com.ctre.CANTalon;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team6027.robot.RobotMap;
 
@@ -11,7 +10,7 @@ import org.usfirst.frc.team6027.robot.RobotMap;
  * @version Post-Build
  */
 public class Flywheel extends Subsystem {
-    private VictorSP mainFlywheel = new VictorSP(RobotMap.mainFlywheelPort);
+    private CANTalon mainFlywheel = new CANTalon(RobotMap.mainFlywheelPort);
 
     public Flywheel(){
 
