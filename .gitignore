@@ -12,14 +12,15 @@
 hs_err_pid*
 /bin/
 
+#Eclipse
+.classpath
+.settings/
+
 # Gradle and IntelliJ
 .gradle/
 .idea/
-gradlew
-gradlew.bat
-gradle/
 build/
-build.gradle
 .DS_STORE
 *.ipr
 *.iws
+*.iml
