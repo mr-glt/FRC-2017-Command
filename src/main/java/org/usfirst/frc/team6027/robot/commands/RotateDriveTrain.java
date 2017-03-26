@@ -25,16 +25,16 @@ public class RotateDriveTrain extends Command{
         requires(Robot.driveEncoders);
         requires(Robot.gyro);
         this.theta=theta;
-        pid = new PIDController(0.2, 0.002, 0.4, Robot.gyro.getGyro(), new pidOutput());
+        pid = new PIDController(0.55, 0.002, 0.4, Robot.gyro.getGyro(), new pidOutput());
         pid.setAbsoluteTolerance(0.25);
         pid.setInputRange(-360,360);
-        pid.setOutputRange(-0.55,0.55);
+        pid.setOutputRange(-0.65,0.65);
         pid.setSetpoint(theta);
     }
 
     @Override
     protected void initialize() {
-        logger.debug("Rotating robot to: " + theta);
+        logger.info("Rotating robot to: " + theta);
         Robot.driveEncoders.getEncoderLeft().reset();
     	pid.reset();
     	pid.enable();

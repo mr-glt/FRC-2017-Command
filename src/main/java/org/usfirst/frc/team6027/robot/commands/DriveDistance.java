@@ -32,7 +32,7 @@ public class DriveDistance extends Command {
         this.setpoint=setpoint;
         this.stoppable=stoppable;
         this.turn=turn;
-        pid = new PIDController(0.85, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidOutput());
+        pid = new PIDController(0.40, 0, 0, Robot.driveEncoders.getEncoderLeft(), new pidOutput());
         pidTurn = new PIDController(0.2, 0.02, 0.4, Robot.gyro.getGyro(), new pidOutputTurn());
 
         pidTurn.setOutputRange(-0.50,0.50);
@@ -41,7 +41,7 @@ public class DriveDistance extends Command {
         }else{
             pid.setInputRange(setpoint-10,0);
         }
-        pid.setAbsoluteTolerance(0.25);
+        pid.setAbsoluteTolerance(0.5);
         pid.setOutputRange(-0.6,0.6);
         pid.setSetpoint(setpoint);
         System.out.println("Driving Forward for:  " + setpoint);

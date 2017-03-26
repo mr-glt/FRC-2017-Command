@@ -22,8 +22,8 @@ public class Climb extends Command{
     }
     @Override
     protected void initialize() {
-        logger.debug("WinchToggle on");
-        SmartDashboard.putBoolean("Winch Set", false);
+        logger.info("WinchToggle on");
+        SmartDashboard.putBoolean("Winch Ready", false);
     }
 
     @Override
@@ -41,13 +41,13 @@ public class Climb extends Command{
     @Override
     protected void end() {
         Robot.winch.off();
-        logger.debug("WinchToggle off");
+        logger.info("WinchToggle off");
     }
 
 
     @Override
     protected void interrupted() {
         Robot.winch.off();
-        logger.debug("WinchToggle off");
+        logger.info("WinchToggle off");
     }
 }

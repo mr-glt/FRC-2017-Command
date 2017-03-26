@@ -26,7 +26,7 @@ public class LeftGear extends CommandGroup {
         addSequential(new DriveDistance(35,false,45));
         addSequential(new RotateDriveTrain(0));
         addSequential(new DriveDistance(-120,true,0));
-        addSequential(new RotateDriveTrain(45));
-        addSequential(new DriveDistance(-120,true,45));
+        addSequential(new RotateDriveTrain(0));
+        addSequential(new DriveDistance(-120,true,0));
     }
 }

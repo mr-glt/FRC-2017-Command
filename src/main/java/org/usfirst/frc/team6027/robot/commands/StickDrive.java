@@ -21,7 +21,7 @@ public class StickDrive extends Command {
     }
 
     protected void initialize() {
-        logger.debug("Using stick drive");
+        logger.info("Using stick drive");
     }
 
     protected void execute() {
@@ -37,6 +37,6 @@ public class StickDrive extends Command {
     }
 
     protected void interrupted() {
-        logger.debug("Stick drive interrupted");
+        logger.info("Stick drive interrupted");
     }
 }

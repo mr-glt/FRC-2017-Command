@@ -28,7 +28,7 @@ public class RobotMap {
     public static double encoderDPP = 0.053534;
     public static int encoderSamplesToAvg = 7;
     public static boolean encoderReverseDirection = false;
-    public static int winchLimitPort = 6;
+    public static int winchLimitPort = 8;
 
     //Constants
     public static double valueToInches = 0.125;

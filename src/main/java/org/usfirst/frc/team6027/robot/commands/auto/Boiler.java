@@ -19,9 +19,9 @@ public class Boiler extends CommandGroup {
     public Boiler(){
         addSequential(new DriveDistance(82,false,0));
         addSequential(new RotateDriveTrain(90));
-        addSequential(new DriveDistance(47,false, 0));
-        addSequential(new DriveDistance(-3,false,0));
-        addSequential(new RotateDriveTrain(-90));
+        addSequential(new DriveDistance(47,false, 90));
+        addSequential(new DriveDistance(-3,false,90));
+        addSequential(new RotateDriveTrain(0));
         addSequential(new SpinVoltage(0.78,false));
     }
 }

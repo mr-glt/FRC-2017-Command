@@ -25,7 +25,7 @@ public class ResetWinch extends Command{
     @Override
     protected void initialize() {
         Robot.winch.initializeCounter();
-        logger.debug("Resetting Winch");
+        logger.info("Resetting Winch");
     }
 
     /**
@@ -52,8 +52,8 @@ public class ResetWinch extends Command{
     @Override
     protected void end() {
         Robot.winch.off();
-        logger.debug("Winch reset");
-        SmartDashboard.putBoolean("Winch Set", true);
+        logger.info("Winch reset");
+        SmartDashboard.putBoolean("Winch Ready", true);
 
     }
 
@@ -62,8 +62,8 @@ public class ResetWinch extends Command{
      */
     @Override
     protected void interrupted() {
-        SmartDashboard.putBoolean("Winch Set", true);
+        SmartDashboard.putBoolean("Winch Ready", true);
         Robot.winch.off();
-        logger.debug("Winch reset interrupted");
+        logger.info("Winch reset interrupted");
     }
 }
