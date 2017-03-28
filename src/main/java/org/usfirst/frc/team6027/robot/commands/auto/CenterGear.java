@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6027.robot.commands.auto;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team6027.robot.AutoMap;
 import org.usfirst.frc.team6027.robot.commands.DriveDistance;
 import org.usfirst.frc.team6027.robot.commands.DriveDistanceFast;
 import org.usfirst.frc.team6027.robot.commands.OpenGDS;
@@ -21,7 +22,7 @@ public class CenterGear extends CommandGroup {
      * 9. Drive quickly 80 inches to cross baseline
      */
     public CenterGear(){
-        addSequential(new DriveDistance(-67,false,0));
+        addSequential(new DriveDistance(-(AutoMap.wallToPeg-AutoMap.adjustment),false,0));
         addSequential(new OpenGDS(1));
         addSequential(new DriveDistance(27,false,0));
         addSequential(new RotateDriveTrain(-90));
