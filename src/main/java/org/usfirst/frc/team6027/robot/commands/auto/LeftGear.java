@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6027.robot.commands.auto;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team6027.robot.AutoMap;
 import org.usfirst.frc.team6027.robot.commands.DriveDistance;
 import org.usfirst.frc.team6027.robot.commands.OpenGDS;
 import org.usfirst.frc.team6027.robot.commands.RotateDriveTrain;
@@ -19,9 +20,9 @@ public class LeftGear extends CommandGroup {
      * 9. Drive 120 inches backwards
      */
     public LeftGear(){
-        addSequential(new DriveDistance(-78,false,0));
-        addSequential(new RotateDriveTrain(45));
-        addSequential(new DriveDistance(-50,false,45));
+        addSequential(new DriveDistance(-(AutoMap.sideForward-AutoMap.adjustment),false,0));
+        addSequential(new RotateDriveTrain(AutoMap.sideTurn));
+        addSequential(new DriveDistance(-(AutoMap.sideIn),false,45));
         addSequential(new OpenGDS(1));
         addSequential(new DriveDistance(35,false,45));
         addSequential(new RotateDriveTrain(0));
