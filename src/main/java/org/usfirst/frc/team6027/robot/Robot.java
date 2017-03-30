@@ -145,7 +145,7 @@ public class Robot extends IterativeRobot {
 		logger.info("Autonomous ended");
 		logger.info("Teleop started");
 		if(autonomousCommandGroup!=null) autonomousCommandGroup.cancel();
-		endTimer.start();
+		//endTimer.start();
 	}
 	@Override
 	public void teleopPeriodic() {
