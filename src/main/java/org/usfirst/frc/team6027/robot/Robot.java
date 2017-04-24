@@ -89,6 +89,7 @@ public class Robot extends IterativeRobot {
 		Compressor c = new Compressor(10);
 		c.setClosedLoopControl(true);
 		gyro.calibrate();
+		winchPush.setLock(false);
 	}
 
 	@Override
@@ -144,6 +145,7 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
 		logger.info("Autonomous ended");
 		logger.info("Teleop started");
+		winchPush.setLock(true);
 		if(autonomousCommandGroup!=null) autonomousCommandGroup.cancel();
 		//endTimer.start();
 	}

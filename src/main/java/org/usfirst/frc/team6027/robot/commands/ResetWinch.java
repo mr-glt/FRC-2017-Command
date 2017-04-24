@@ -33,8 +33,8 @@ public class ResetWinch extends Command{
      */
     @Override
     protected void execute() {
-        Robot.winch.on();
-        Robot.winchPush.setLock(false);
+        Robot.winch.onSlow();
+        Robot.winchPush.setLock(true);
     }
 
     /**

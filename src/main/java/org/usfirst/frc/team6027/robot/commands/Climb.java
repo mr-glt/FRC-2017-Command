@@ -30,7 +30,7 @@ public class Climb extends Command{
     protected void execute() {
         Robot.fieldTimer.stopRumble();
     	Robot.winch.on();
-    	Robot.winchPush.setLock(true);
+    	Robot.winchPush.setLock(false);
     }
 
     @Override

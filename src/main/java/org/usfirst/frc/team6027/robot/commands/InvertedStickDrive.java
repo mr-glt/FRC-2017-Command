@@ -19,7 +19,7 @@ public class InvertedStickDrive extends Command {
     }
 
     protected void execute() {
-    	Robot.drivetrain.arcadeDrive(Robot.oi.getController().getRawAxis(1)*0.6, -Robot.oi.getController().getRawAxis(4)*0.75);
+    	Robot.drivetrain.arcadeDrive(Robot.oi.getController().getRawAxis(1)*0.65, -Robot.oi.getController().getRawAxis(4)*0.80);
     }
 
     /**
