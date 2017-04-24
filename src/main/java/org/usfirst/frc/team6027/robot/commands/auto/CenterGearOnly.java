@@ -14,7 +14,7 @@ public class CenterGearOnly extends CommandGroup {
      */
     public CenterGearOnly(){
         addSequential(new DriveDistance(-(AutoMap.wallToPeg-AutoMap.adjustment),false,0));
-        addSequential(new OpenGDS(1));
-        addSequential(new DriveDistance(27,false,0));
+        addSequential(new OpenGDS(2));
+        addSequential(new DriveDistance(30,false,0));
     }
 }

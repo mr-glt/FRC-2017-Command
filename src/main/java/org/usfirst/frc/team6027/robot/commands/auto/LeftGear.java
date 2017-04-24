@@ -23,11 +23,11 @@ public class LeftGear extends CommandGroup {
         addSequential(new DriveDistance(-(AutoMap.sideForward-AutoMap.adjustment),false,0));
         addSequential(new RotateDriveTrain(AutoMap.sideTurn));
         addSequential(new DriveDistance(-(AutoMap.sideIn),false,45));
-        addSequential(new OpenGDS(1));
-        addSequential(new DriveDistance(35,false,45));
-        addSequential(new RotateDriveTrain(0));
-        addSequential(new DriveDistance(-120,true,0));
-        addSequential(new RotateDriveTrain(0));
-        addSequential(new DriveDistance(-120,true,0));
+        //addSequential(new OpenGDS(1));
+        //addSequential(new DriveDistance(35,false,45));
+        //addSequential(new RotateDriveTrain(0));
+        //addSequential(new DriveDistance(-120,true,0));
+        //addSequential(new RotateDriveTrain(0));
+        //addSequential(new DriveDistance(-120,true,0));
     }
 }
